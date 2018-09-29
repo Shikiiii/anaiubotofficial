@@ -5,6 +5,7 @@ import asyncio
 from itertools import cycle
 import aiohttp
 import random
+import os
 
 bot = commands.Bot(command_prefix='!')
 bot.remove_command('help')
@@ -237,4 +238,4 @@ def switch(argument):
 async def reminder(ctx):
     await bot.say(switch(ctx.message.author.name.lower()))
 
-bot.run(process.env.token)
+bot.run(os.environ.get("token"))
