@@ -4,7 +4,6 @@ from discord.ext.commands import Bot
 import asyncio
 from itertools import cycle
 import aiohttp
-import mysql.connector
 import random
 
 bot = commands.Bot(command_prefix='!')
