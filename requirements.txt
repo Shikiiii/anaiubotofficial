@@ -1,9 +1,1 @@
-pip install discord.py
 discord.py
-from discord.ext commands
-from discord.ext.commands Bot
-asyncio
-from itertools cycle
-aiohttp
-mysql.connector
-random
