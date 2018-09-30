@@ -215,11 +215,6 @@ async def magicball(ctx, *reason):
     print("{} used !magicball, question: {}".format(ctx.message.author.name, rsn))
 
 voice_client = None
-@bot.command(pass_context=True)
-async def join(ctx):
-    await bot.say("✅ Successfuly ``joined`` your voice channel!")
-    channel = ctx.message.author.voice.voice_channel
-    voice_client = await bot.join_voice_channel(channel)
 
 @bot.command(pass_context=True)
 async def leave(ctx):
