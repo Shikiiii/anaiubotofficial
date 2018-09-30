@@ -244,7 +244,7 @@ async def reminder(ctx):
 async def play(ctx, url):
     server = ctx.message.server
     voice_client = bot.voice_client_in(server)
-    player = await voice_client.create_ytdl_player(url)
+    player = await voice_client.create_ytdl_player(url).format(url)
     players[server.id] = player
     player.start()
 
