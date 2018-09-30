@@ -243,7 +243,7 @@ async def reminder(ctx):
 @bot.command(pass_context=True)
 async def play(ctx, url):
     server = ctx.message.server
-    voice_client = client.voice_client_in(server)
+    voice_client = bot.voice_client_in(server)
     player = await voice_client.create_ytdl_player(url)
     players[server.id] = player
     player.start()
