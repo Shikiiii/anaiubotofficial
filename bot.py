@@ -248,9 +248,9 @@ async def kiss(ctx, username, *reason):
       rsn = " ".join(reason)
       rdm = random.choice(msgs)
       embed = discord.Embed(title="**{}** has been kissed by **{}** for **{}**.".format(user.name, ctx.message.author.name, rsn), color=0xfe2ef7)
-      embed.set_image(rdm)
+      embed.set_image(url=rdm)
       await bot.say(embed=embed)
     else:
-        await bot.say("You need to mention a user to kiss him/her!") 
+      await bot.say("You need to mention a user to kiss him/her!") 
 
 bot.run(os.environ.get("token"))
