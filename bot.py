@@ -246,7 +246,7 @@ async def kiss(ctx, username):
       user = ctx.message.mentions[0]
       msgs = ["https://cdn.discordapp.com/attachments/496005430254764042/497891785323053056/discord-avatar30092018.png", "https://cdn.discordapp.com/attachments/496005430254764042/497891785323053056/discord-avatar30092018.png"]
       rdm = random.choice(msgs)
-      embed = discord.Embed(title="**{}** kisses **{}**".format(user.name, ctx.message.author.name), color=0xfe2ef7)
+      embed = discord.Embed(title="**{}** kisses **{}**".format(ctx.message.author.name, user.name), color=0xfe2ef7)
       embed.set_image(url=rdm)
       await bot.say(embed=embed)
     else:
@@ -258,11 +258,11 @@ async def hug(ctx, username):
       user = ctx.message.mentions[0]
       msgs = ["https://cdn.discordapp.com/attachments/496005430254764042/497891785323053056/discord-avatar30092018.png", "https://cdn.discordapp.com/attachments/496005430254764042/497891785323053056/discord-avatar30092018.png"]
       rdm = random.choice(msgs)
-      embed = discord.Embed(title="**{}** hugs **{}**.".format(user.name, ctx.message.author.name), color=0xfe2ef7)
+      embed = discord.Embed(title="**{}** hugs **{}**.".format(ctx.message.author.name, user.name), color=0xfe2ef7)
       embed.set_image(url=rdm)
       await bot.say(embed=embed)
     else:
-      await bot.say("You need to mention a user to kiss him/her!")
+      await bot.say("You need to mention a user to hug him/her!")
     
 bot.command(pass_context=True)
 async def slap(ctx, username):
@@ -270,11 +270,11 @@ async def slap(ctx, username):
       user = ctx.message.mentions[0]
       msgs = ["https://cdn.discordapp.com/attachments/496005430254764042/497891785323053056/discord-avatar30092018.png", "https://cdn.discordapp.com/attachments/496005430254764042/497891785323053056/discord-avatar30092018.png"]
       rdm = random.choice(msgs)
-      embed = discord.Embed(title="**{}** slaps **{}**.".format(user.name, ctx.message.author.name), color=0xfe2ef7)
+      embed = discord.Embed(title="**{}** slaps **{}**.".format(ctx.message.author.name, user.name), color=0xfe2ef7)
       embed.set_image(url=rdm)
       await bot.say(embed=embed)
     else:
-      await bot.say("You need to mention a user to kiss him/her!")
+      await bot.say("You need to mention a user to slap him/her!")
     
 bot.command(pass_context=True)
 async def pet(ctx, username):
@@ -282,11 +282,11 @@ async def pet(ctx, username):
       user = ctx.message.mentions[0]
       msgs = ["https://cdn.discordapp.com/attachments/496005430254764042/497891785323053056/discord-avatar30092018.png", "https://cdn.discordapp.com/attachments/496005430254764042/497891785323053056/discord-avatar30092018.png"]
       rdm = random.choice(msgs)
-      embed = discord.Embed(title="**{}** pets **{}**.".format(user.name, ctx.message.author.name), color=0xfe2ef7)
+      embed = discord.Embed(title="**{}** pets **{}**.".format(ctx.message.author.name, user.name), color=0xfe2ef7)
       embed.set_image(url=rdm)
       await bot.say(embed=embed)
     else:
-      await bot.say("You need to mention a user to kiss him/her!")
+      await bot.say("You need to mention a user to pet him/her!")
     
 bot.command(pass_context=True)
 async def bite(ctx, username):
@@ -294,11 +294,11 @@ async def bite(ctx, username):
       user = ctx.message.mentions[0]
       msgs = ["https://cdn.discordapp.com/attachments/496005430254764042/497891785323053056/discord-avatar30092018.png", "https://cdn.discordapp.com/attachments/496005430254764042/497891785323053056/discord-avatar30092018.png"]
       rdm = random.choice(msgs)
-      embed = discord.Embed(title="**{}** bites **{}**.".format(user.name, ctx.message.author.name), color=0xfe2ef7)
+      embed = discord.Embed(title="**{}** bites **{}**.".format(ctx.message.author.name, user.name), color=0xfe2ef7)
       embed.set_image(url=rdm)
       await bot.say(embed=embed)
     else:
-      await bot.say("You need to mention a user to kiss him/her!")
+      await bot.say("You need to mention a user to bite him/her!")
 
     
 bot.command(pass_context=True)
@@ -307,10 +307,10 @@ async def tickle(ctx, username):
       user = ctx.message.mentions[0]
       msgs = ["https://cdn.discordapp.com/attachments/496005430254764042/497891785323053056/discord-avatar30092018.png", "https://cdn.discordapp.com/attachments/496005430254764042/497891785323053056/discord-avatar30092018.png"]
       rdm = random.choice(msgs)
-      embed = discord.Embed(title="**{}** tickles **{}**.".format(user.name, ctx.message.author.name), color=0xfe2ef7)
+      embed = discord.Embed(title="**{}** tickles **{}**.".format(ctx.message.author.name, user.name), color=0xfe2ef7)
       embed.set_image(url=rdm)
       await bot.say(embed=embed)
     else:
-      await bot.say("You need to mention a user to kiss him/her!")
+      await bot.say("You need to mention a user to tickle him/her!")
 
 bot.run(os.environ.get("token"))
