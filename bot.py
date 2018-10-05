@@ -242,13 +242,14 @@ async def reminder(ctx):
 
 @bot.command(pass_context=True)
 async def kiss(ctx, username, *reason):
-        reason = " ".join(reason)
-        imgList = os.listdir(".anaiubotofficial/picsngifs/kiss")
-        imgString = random.choice(imgList)
-        path = ".anaiubotofficial/picsngifs/kiss/" + imgString
-        embed = discord.embed
-        embed.set_author("**{}** has been kissed by **{}** for **{}**!".format(username, ctx.message.author.name, reason))
+    if len(ctx.message.mentions) > 0:
+      user = ctx.message.mentions[0]
+        kiss = ["https://cdn.discordapp.com/attachments/496005430254764042/497877908749287450/Untitled-1.png"]
+        rsn = " ".join(reason)
+        embed = discord.Embed()
+        embed.set_author("**{}** has been kissed by **{}** for **{}**. {}".format(username, ctx.message.author.name, rsn, kiss))
         await bot.say(embed=embed)
-        await bot.send_file(message.channel, file)
+    else:
+        await bot.say("You need to mention a user to kiss him/her!")
 
 bot.run(os.environ.get("token"))
