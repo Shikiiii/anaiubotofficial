@@ -246,7 +246,7 @@ async def kiss(ctx, username):
       user = ctx.message.mentions[0]
       msgs = ["https://cdn.discordapp.com/attachments/496005430254764042/497891785323053056/discord-avatar30092018.png", "https://cdn.discordapp.com/attachments/496005430254764042/497891785323053056/discord-avatar30092018.png"]
       rdm = random.choice(msgs)
-      embed = discord.Embed(title="**{}** kisses **{}**".format(ctx.message.author.name, user.name), color=0xfe2ef7)
+      embed = discord.Embed(title="**{}** kisses **{}**.".format(ctx.message.author.name, user.name), color=0xfe2ef7)
       embed.set_image(url=rdm)
       await bot.say(embed=embed)
     else:
