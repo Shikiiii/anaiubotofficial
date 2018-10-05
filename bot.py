@@ -251,6 +251,6 @@ async def kiss(ctx, username, *reason):
       embed.set_image(rdm)
       await bot.say(embed=embed)
     else:
-        await bot.say("You need to mention a user to kiss him/her!")
+        await bot.say("You need to mention a user to kiss him/her!") 
 
 bot.run(os.environ.get("token"))
