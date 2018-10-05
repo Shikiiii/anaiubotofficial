@@ -248,6 +248,7 @@ async def kiss(ctx, username, *reason):
         path = ".picsngifs/kiss/" + imgString
         embed = discord.embed()
         embed.set_author("**{}** has been kissed by **{}** for **{}**!".format(username, ctx.message.author.name, reason))
-        await bot.say(embed=embed, path)
+        await bot.say(embed=embed)
+        await bot.send_file(message.channel, file)
 
 bot.run(os.environ.get("token"))
