@@ -241,11 +241,13 @@ async def reminder(ctx):
     await bot.say(switch(ctx.message.author.name.lower()))
 
 @bot.command(pass_context=True)
-async def play(ctx, url):
-    server = ctx.message.server
-    voice_client = bot.voice_client_in(server)
-    player = await voice_client.create_ytdl_player(url).format(url)
-    players[server.id] = player
-    player.start()
+async def kiss(ctx, username, *reason):
+        reason = " ".join(reason)
+        imgList = os.listdir(".picsngifs/kiss")
+        imgString = random.choice(imgList)
+        path = ".picsngifs/kiss/" + imgString
+        embed = discord.embed()
+        embed.set_author("**{}** has been kissed by **{}** for **{}**!".format(username, ctx.message.author.name, reason))
+        await bot.say(embed=embed, path)
 
 bot.run(os.environ.get("token"))
