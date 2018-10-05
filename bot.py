@@ -244,10 +244,10 @@ async def reminder(ctx):
 async def kiss(ctx, username, *reason):
     if len(ctx.message.mentions) > 0:
       user = ctx.message.mentions[0]
-      msgs = ["http://bit.ly/2Ruy9Ib", "http://bit.ly/2E9XeFA"]
+      msgs = ["https://cdn.discordapp.com/attachments/496005430254764042/497877908749287450/Untitled-1.png", "https://cdn.discordapp.com/attachments/435485699140091906/497884677168693278/discord-animated-avatar.gif"]
       rsn = " ".join(reason)
       rdm = random.choice(msgs)
-      embed = discord.Embed(title="**{}** has been kissed by **{}** for **{}**.".format(username, ctx.message.author.name, rsn), description=rdm, color=0xfe2ef7)
+      embed = discord.Embed(title="**{}** has been kissed by **{}** for **{}**.".format(user.name, ctx.message.author.name, rsn), description=rdm, color=0xfe2ef7)
       await bot.say(embed=embed)
     else:
         await bot.say("You need to mention a user to kiss him/her!")
