@@ -252,7 +252,7 @@ async def kiss(ctx, username):
     else:
       await bot.say("You need to mention a user to kiss him/her!")
     
-bot.command(pass_context=True)
+@bot.command(pass_context=True)
 async def hug(ctx, username):
     if len(ctx.message.mentions) > 0:
       user = ctx.message.mentions[0]
@@ -264,7 +264,7 @@ async def hug(ctx, username):
     else:
       await bot.say("You need to mention a user to hug him/her!")
     
-bot.command(pass_context=True)
+@bot.command(pass_context=True)
 async def slap(ctx, username):
     if len(ctx.message.mentions) > 0:
       user = ctx.message.mentions[0]
@@ -276,7 +276,7 @@ async def slap(ctx, username):
     else:
       await bot.say("You need to mention a user to slap him/her!")
     
-bot.command(pass_context=True)
+@bot.command(pass_context=True)
 async def pet(ctx, username):
     if len(ctx.message.mentions) > 0:
       user = ctx.message.mentions[0]
@@ -301,7 +301,7 @@ async def bite(ctx, username):
       await bot.say("You need to mention a user to bite him/her!")
 
     
-bot.command(pass_context=True)
+@bot.command(pass_context=True)
 async def tickle(ctx, username):
     if len(ctx.message.mentions) > 0:
       user = ctx.message.mentions[0]
