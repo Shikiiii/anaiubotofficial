@@ -16,11 +16,6 @@ players = []
 async def on_ready():
     await bot.change_presence(game=discord.Game(name='!help | Made by Thegamesbg#2392 with love.'))
     print('Starting up...')
-    
-@bot.command(pass_context=True)
-async def message(message):
-    if message.content == "@Anaiu | Anime News Official Bot#7717"
-        await bot.say("My prefix is ``!`` | ``!help``")
 
 @bot.event
 async def on_member_join(member):
