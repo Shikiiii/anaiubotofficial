@@ -241,16 +241,76 @@ async def reminder(ctx):
     await bot.say(switch(ctx.message.author.name.lower()))
 
 @bot.command(pass_context=True)
-async def kiss(ctx, username, *reason):
+async def kiss(ctx, username):
     if len(ctx.message.mentions) > 0:
       user = ctx.message.mentions[0]
       msgs = ["https://cdn.discordapp.com/attachments/496005430254764042/497891785323053056/discord-avatar30092018.png", "https://cdn.discordapp.com/attachments/496005430254764042/497891785323053056/discord-avatar30092018.png"]
-      rsn = " ".join(reason)
       rdm = random.choice(msgs)
-      embed = discord.Embed(title="**{}** has been kissed by **{}** for **{}**.".format(user.name, ctx.message.author.name, rsn), color=0xfe2ef7)
+      embed = discord.Embed(title="**{}** kisses **{}**".format(user.name, ctx.message.author.name), color=0xfe2ef7)
       embed.set_image(url=rdm)
       await bot.say(embed=embed)
     else:
-      await bot.say("You need to mention a user to kiss him/her!") 
+      await bot.say("You need to mention a user to kiss him/her!")
+    
+bot.command(pass_context=True)
+async def hug(ctx, username):
+    if len(ctx.message.mentions) > 0:
+      user = ctx.message.mentions[0]
+      msgs = ["https://cdn.discordapp.com/attachments/496005430254764042/497891785323053056/discord-avatar30092018.png", "https://cdn.discordapp.com/attachments/496005430254764042/497891785323053056/discord-avatar30092018.png"]
+      rdm = random.choice(msgs)
+      embed = discord.Embed(title="**{}** hugs **{}**.".format(user.name, ctx.message.author.name), color=0xfe2ef7)
+      embed.set_image(url=rdm)
+      await bot.say(embed=embed)
+    else:
+      await bot.say("You need to mention a user to kiss him/her!")
+    
+bot.command(pass_context=True)
+async def slap(ctx, username):
+    if len(ctx.message.mentions) > 0:
+      user = ctx.message.mentions[0]
+      msgs = ["https://cdn.discordapp.com/attachments/496005430254764042/497891785323053056/discord-avatar30092018.png", "https://cdn.discordapp.com/attachments/496005430254764042/497891785323053056/discord-avatar30092018.png"]
+      rdm = random.choice(msgs)
+      embed = discord.Embed(title="**{}** slaps **{}**.".format(user.name, ctx.message.author.name), color=0xfe2ef7)
+      embed.set_image(url=rdm)
+      await bot.say(embed=embed)
+    else:
+      await bot.say("You need to mention a user to kiss him/her!")
+    
+bot.command(pass_context=True)
+async def pet(ctx, username):
+    if len(ctx.message.mentions) > 0:
+      user = ctx.message.mentions[0]
+      msgs = ["https://cdn.discordapp.com/attachments/496005430254764042/497891785323053056/discord-avatar30092018.png", "https://cdn.discordapp.com/attachments/496005430254764042/497891785323053056/discord-avatar30092018.png"]
+      rdm = random.choice(msgs)
+      embed = discord.Embed(title="**{}** pets **{}**.".format(user.name, ctx.message.author.name), color=0xfe2ef7)
+      embed.set_image(url=rdm)
+      await bot.say(embed=embed)
+    else:
+      await bot.say("You need to mention a user to kiss him/her!")
+    
+bot.command(pass_context=True)
+async def bite(ctx, username):
+    if len(ctx.message.mentions) > 0:
+      user = ctx.message.mentions[0]
+      msgs = ["https://cdn.discordapp.com/attachments/496005430254764042/497891785323053056/discord-avatar30092018.png", "https://cdn.discordapp.com/attachments/496005430254764042/497891785323053056/discord-avatar30092018.png"]
+      rdm = random.choice(msgs)
+      embed = discord.Embed(title="**{}** bites **{}**.".format(user.name, ctx.message.author.name), color=0xfe2ef7)
+      embed.set_image(url=rdm)
+      await bot.say(embed=embed)
+    else:
+      await bot.say("You need to mention a user to kiss him/her!")
+
+    
+bot.command(pass_context=True)
+async def tickle(ctx, username):
+    if len(ctx.message.mentions) > 0:
+      user = ctx.message.mentions[0]
+      msgs = ["https://cdn.discordapp.com/attachments/496005430254764042/497891785323053056/discord-avatar30092018.png", "https://cdn.discordapp.com/attachments/496005430254764042/497891785323053056/discord-avatar30092018.png"]
+      rdm = random.choice(msgs)
+      embed = discord.Embed(title="**{}** tickles **{}**.".format(user.name, ctx.message.author.name), color=0xfe2ef7)
+      embed.set_image(url=rdm)
+      await bot.say(embed=embed)
+    else:
+      await bot.say("You need to mention a user to kiss him/her!")
 
 bot.run(os.environ.get("token"))
