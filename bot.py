@@ -256,11 +256,12 @@ async def kiss(ctx, username):
       embed.set_image(url=rdm)
       await bot.say(embed=embed)
     else:
-      await bot.say("You need to mention a user to kiss him/her!")
-    
+      await bot.say("You need to mention a user to kiss him/her!")    
+
 @kiss.error
 async def kiss_error(error, ctx):
     if isinstance(error, commands.CommandOnCooldown):
+        retry_after = commands.CommandOnCooldown(retry_after)
         await bot.say("Hey, {}! Sorry but this command has a cooldown of **10 seconds**, please try again in **{}** seconds.".format(ctx.message.author.name, retry_after))
     
 @bot.command(pass_context=True)
