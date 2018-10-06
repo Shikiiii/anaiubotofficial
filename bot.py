@@ -379,15 +379,7 @@ async def embedtest(ctx):
 async def embedimg(ctx, *reason):
     rsn = " ".join(reason)
     embed = discord.Embed()
-    embed.set_image(url="{}".format(rsn))
-    await bot.say(embed=embed)
-    
-@bot.command(pass_context=True)
-async def embedimg(ctx, *reason):
-    rsn = " ".join(reason)
-    embed = discord.Embed()
     embed.set_image(url={}.format(rsn))
     await bot.say(embed=embed)
-
-
+    
 bot.run(os.environ.get("token"))
