@@ -7,6 +7,7 @@ import aiohttp
 import random
 import os
 from discord.voice_client import VoiceClient
+import buckettype
 
 bot = commands.Bot(command_prefix='!')
 bot.remove_command('help')
