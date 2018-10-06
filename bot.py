@@ -34,6 +34,10 @@ async def on_member_remove(member):
 async def hello(ctx):
     await bot.say("Hello! :smile:")
     print('Someone used command (ID: !hello). The command was successfully executed.')
+    
+@bot.command
+async def t():
+    await bot.say("**Online**! :white_check_mark:")
 
 @bot.command(pass_context=True)
 async def clear(ctx, amount=100):
