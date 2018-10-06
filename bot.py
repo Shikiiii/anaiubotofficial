@@ -7,8 +7,6 @@ import aiohttp
 import random
 import os
 from discord.voice_client import VoiceClient
-import BucketType
-from BucketType import cooldowns
 from errors import *
 
 startup_extension = ["Music"]
