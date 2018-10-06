@@ -7,6 +7,8 @@ import aiohttp
 import random
 import os
 from discord.voice_client import VoiceClient
+from cooldowns import Cooldown, BucketType, CooldownMapping
+from errors import *
 
 startup_extension = ["Music"]
 bot = commands.Bot(command_prefix='!')
@@ -257,7 +259,7 @@ async def kiss(ctx, username):
     
 @kiss.error(pass_context=True)
 async def kiss_error(ctx, username):
-    if isinstance(error, commands.CheckFailure):
+    if is_on_cooldown(error, commands.CheckFailure):
         await bot.say("Hey, {}! Sorry but this command has a cooldown of **10 seconds**, please try again later.".format(ctx.message.author.name))
     
 @bot.command(pass_context=True)
