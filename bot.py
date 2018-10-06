@@ -7,7 +7,6 @@ import aiohttp
 import random
 import os
 from discord.voice_client import VoiceClient
-import buckettype
 
 bot = commands.Bot(command_prefix='!')
 bot.remove_command('help')
@@ -261,7 +260,7 @@ async def kiss_error(error, ctx, username):
         await bot.say("Hey, {}! Sorry but this command has a cooldown of **10 seconds**, please try again later.".format(ctx.message.author.name))
     
 @bot.command(pass_context=True)
-@bot.cooldown(1, 10, commands.BucketType.user)
+@commands.cooldown(1, 10, commands.BucketType.user)
 async def hug(ctx, username):
     if len(ctx.message.mentions) > 0:
       user = ctx.message.mentions[0]
@@ -274,7 +273,7 @@ async def hug(ctx, username):
       await bot.say("You need to mention a user to hug him/her!")
     
 @bot.command(pass_context=True)
-@bot.cooldown(1, 10, commands.BucketType.user)
+@commands.cooldown(1, 10, commands.BucketType.user)
 async def slap(ctx, username):
     if len(ctx.message.mentions) > 0:
       user = ctx.message.mentions[0]
@@ -287,7 +286,7 @@ async def slap(ctx, username):
       await bot.say("You need to mention a user to slap him/her!")
     
 @bot.command(pass_context=True)
-@bot.cooldown(1, 10, commands.BucketType.user)
+@commands.cooldown(1, 10, commands.BucketType.user)
 async def pet(ctx, username):
     if len(ctx.message.mentions) > 0:
       user = ctx.message.mentions[0]
@@ -300,7 +299,7 @@ async def pet(ctx, username):
       await bot.say("You need to mention a user to pet him/her!")
     
 bot.command(pass_context=True)
-@bot.cooldown(1, 10, commands.BucketType.user)
+@commands.cooldown(1, 10, commands.BucketType.user)
 async def bite(ctx, username):
     if len(ctx.message.mentions) > 0:
       user = ctx.message.mentions[0]
@@ -314,7 +313,7 @@ async def bite(ctx, username):
 
     
 @bot.command(pass_context=True)
-@bot.cooldown(1, 10, commands.BucketType.user)
+@commands.cooldown(1, 10, commands.BucketType.user)
 async def tickle(ctx, username):
     if len(ctx.message.mentions) > 0:
       user = ctx.message.mentions[0]
@@ -327,7 +326,7 @@ async def tickle(ctx, username):
       await bot.say("You need to mention a user to tickle him/her!")
     
 @bot.command(pass_context=True)
-@bot.cooldown(1, 10, commands.BucketType.user)
+@commands.cooldown(1, 10, commands.BucketType.user)
 async def cry(ctx, username):
     msgs = []
     rdm = random.choice(msgs)
