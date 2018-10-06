@@ -368,8 +368,8 @@ async def cry_error(error, ctx):
     if isinstance(error, commands.CommandOnCooldown):
         await bot.say(":x: | Hey, **{}**! Sorry but this command has a cooldown of 10 seconds, please try again in **{}** seconds.".format(ctx.message.author.name, round(error.retry_after, 1)))
 
-@bot.command
-async def embedtest():
+@bot.command(pass_context=True)
+async def embedtest(ctx):
     embed = discord.Embed()
     embed.set_image(url="https://cdn.nekos.life/kiss/8585.gif")
     await bot.say(embed=embed)
