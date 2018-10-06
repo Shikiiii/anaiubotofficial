@@ -243,6 +243,7 @@ async def reminder(ctx):
     await bot.say(switch(ctx.message.author.name.lower()))
 
 @bot.command(pass_context=True)
+@bot.cooldown(1, 10, commands.BucketType.user)
 async def kiss(ctx, username):
     if len(ctx.message.mentions) > 0:
       user = ctx.message.mentions[0]
@@ -254,7 +255,13 @@ async def kiss(ctx, username):
     else:
       await bot.say("You need to mention a user to kiss him/her!")
     
+@kiss.error(pass_context=True)
+async def kiss_error(ctx, username):
+    if isinstance(error, commands.CheckFailure):
+        await bot.say("Hey, {}! Sorry but this command has a cooldown of **10 seconds**, please try again later.".format(ctx.message.author.name))
+    
 @bot.command(pass_context=True)
+@bot.cooldown(1, 10, commands.BucketType.user)
 async def hug(ctx, username):
     if len(ctx.message.mentions) > 0:
       user = ctx.message.mentions[0]
@@ -267,6 +274,7 @@ async def hug(ctx, username):
       await bot.say("You need to mention a user to hug him/her!")
     
 @bot.command(pass_context=True)
+@bot.cooldown(1, 10, commands.BucketType.user)
 async def slap(ctx, username):
     if len(ctx.message.mentions) > 0:
       user = ctx.message.mentions[0]
@@ -279,6 +287,7 @@ async def slap(ctx, username):
       await bot.say("You need to mention a user to slap him/her!")
     
 @bot.command(pass_context=True)
+@bot.cooldown(1, 10, commands.BucketType.user)
 async def pet(ctx, username):
     if len(ctx.message.mentions) > 0:
       user = ctx.message.mentions[0]
@@ -291,6 +300,7 @@ async def pet(ctx, username):
       await bot.say("You need to mention a user to pet him/her!")
     
 bot.command(pass_context=True)
+@bot.cooldown(1, 10, commands.BucketType.user)
 async def bite(ctx, username):
     if len(ctx.message.mentions) > 0:
       user = ctx.message.mentions[0]
@@ -304,6 +314,7 @@ async def bite(ctx, username):
 
     
 @bot.command(pass_context=True)
+@bot.cooldown(1, 10, commands.BucketType.user)
 async def tickle(ctx, username):
     if len(ctx.message.mentions) > 0:
       user = ctx.message.mentions[0]
@@ -315,16 +326,13 @@ async def tickle(ctx, username):
     else:
       await bot.say("You need to mention a user to tickle him/her!")
     
-class Main_Commands():
-        def __init__(self, bot):
-         self.bot = bot
-        
-if __name__ "" "__main__":
-    for extension in startup_extensions:
-        try:
-            bot.load_extension(extension)
-        expect Expection as e:
-            exc = '{}: {}'.format(type(e).__name__, e)
-            print("Failed to load extension")
+@bot.command(pass_context=True)
+@bot.cooldown(1, 10, commands.BucketType.user)
+async def cry(ctx, username):
+    msgs = []
+    rdm = random.choice(msgs)
+    embed = discord.Embed(title="**{}** is crying...".format(ctx.message.author.name), color=0xfe2ef7)
+    embed.set_image(url=rdm)
+    await bot.say(embed=embed)
 
 bot.run(os.environ.get("token"))
