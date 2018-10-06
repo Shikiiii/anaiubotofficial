@@ -258,9 +258,9 @@ async def kiss(ctx, username):
     else:
       await bot.say("You need to mention a user to kiss him/her!")
     
-@kiss.error
+@kiss.error(pass_context=True)
 async def kiss_error(error, ctx, username):
-    if is_on_cooldown(error, commands.CheckFailure):
+    if isinstance(error, commands.CheckFailure):
         await bot.say("Hey, {}! Sorry but this command has a cooldown of **10 seconds**, please try again later.".format(ctx.message.author.name))
     
 @bot.command(pass_context=True)
