@@ -327,7 +327,7 @@ async def tickle(ctx, username):
     
 @bot.command(pass_context=True)
 @commands.cooldown(1, 10, commands.BucketType.user)
-async def cry(ctx, username):
+async def cry(ctx):
     msgs = []
     rdm = random.choice(msgs)
     embed = discord.Embed(title="**{}** is crying...".format(ctx.message.author.name), color=0xfe2ef7)
