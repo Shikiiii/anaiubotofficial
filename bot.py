@@ -7,7 +7,6 @@ import aiohttp
 import random
 import os
 from discord.voice_client import VoiceClient
-from errors import *
 
 startup_extension = ["Music"]
 bot = commands.Bot(command_prefix='!')
