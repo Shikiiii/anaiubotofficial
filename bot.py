@@ -250,7 +250,7 @@ async def reminder(ctx):
 async def kiss(ctx, username):
     if len(ctx.message.mentions) > 0:
       user = ctx.message.mentions[0]
-      msgs = ["https://cdn.discordapp.com/attachments/496005430254764042/497891785323053056/discord-avatar30092018.png", "https://cdn.discordapp.com/attachments/496005430254764042/497891785323053056/discord-avatar30092018.png"]
+      msgs = ["https://cdn.nekos.life/kiss/8585.gif", "https://cdn.discordapp.com/attachments/496005430254764042/497891785323053056/discord-avatar30092018.png"]
       rdm = random.choice(msgs)
       embed = discord.Embed(title="**{}** kisses **{}**.".format(ctx.message.author.name, user.name), color=0xfe2ef7)
       embed.set_image(url=rdm)
@@ -367,5 +367,11 @@ async def cry(ctx):
 async def cry_error(error, ctx):
     if isinstance(error, commands.CommandOnCooldown):
         await bot.say(":x: | Hey, **{}**! Sorry but this command has a cooldown of 10 seconds, please try again in **{}** seconds.".format(ctx.message.author.name, round(error.retry_after, 1)))
+
+@bot.command
+async def embedtest():
+    embed = discord.Embed()
+    embed.set_image(url="https://cdn.nekos.life/kiss/8585.gif")
+    await bot.say(embed=embed)
 
 bot.run(os.environ.get("token"))
