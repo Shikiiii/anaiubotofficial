@@ -8,7 +8,6 @@ import random
 import os
 from discord.voice_client import VoiceClient
 
-startup_extension = ["Music"]
 bot = commands.Bot(command_prefix='!')
 bot.remove_command('help')
 
