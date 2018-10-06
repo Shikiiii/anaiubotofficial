@@ -46,8 +46,7 @@ async def clear(ctx, amount=100):
     async for message in bot.logs_from(channel, limit=int(amount) +1):
         messages.append(message)
     await bot.delete_messages(messages)
-    embed = discord.Embed(color=0x3adf00)
-    embed.set_author("Deleted. :thumbsup:")
+    embed = discord.Embed(title="Deleted! :thumbsup", color=0x3adf00)
     embed.set_icon(url=ctx.message.author.author.avatar_url)
     await bot.say(embed=embed)
     print('Someone used command (ID: !clear). The command was successfully executed.')
