@@ -250,9 +250,9 @@ async def reminder(ctx):
 async def kiss(ctx, username):
     if len(ctx.message.mentions) > 0:
       user = ctx.message.mentions[0]
-      msgs = ["https://cdn.nekos.life/kiss/8585.gif", "https://cdn.discordapp.com/attachments/496005430254764042/497891785323053056/discord-avatar30092018.png"]
+      msgs = ["https://cdn.nekos.life/kiss/8585.gif", "https://images-ext-1.discordapp.net/external/Bzrtv_MYjG3fYIbCECRNgUcao1L_MUzpUASOwrtPiG0/https/cdn.nekos.life/kiss/2929.gif", "https://cdn.nekos.life/kiss/kiss13142.gif", "https://cdn.nekos.life/kiss/155155.gif", "https://images-ext-1.discordapp.net/external/zeO78IQa-yafl8XNzVtGFlqG8jHLw3fAKH-QU8e-5Xk/https/cdn.nekos.life/kiss/139139.gif", "https://cdn.nekos.life/kiss/C9C9.gif", "https://cdn.nekos.life/kiss/kiss10050.gif", "https://cdn.nekos.life/kiss/141141.gif", "https://cdn.nekos.life/kiss/kiss18553.gif", "https://cdn.nekos.life/kiss/C5C5.gif", "https://cdn.nekos.life/kiss/kiss1547.gif","https://cdn.nekos.life/kiss/D9D9.gif", "https://cdn.nekos.life/kiss/5555.gif", "https://cdn.nekos.life/kiss/9595.gif", "https://cdn.nekos.life/kiss/kiss16234.gif", "https://cdn.nekos.life/kiss/3535.gif","https://cdn.nekos.life/kiss/119119.gif"]
       rdm = random.choice(msgs)
-      embed = discord.Embed(title="**{}** kisses **{}**.".format(ctx.message.author.name, user.name), color=0xfe2ef7)
+      embed = discord.Embed(title="**{}** kisses **{}**. :heart:".format(ctx.message.author.name, user.name), color=0xfe2ef7)
       embed.set_image(url=rdm)
       await bot.say(embed=embed)
     else:
@@ -268,7 +268,7 @@ async def kiss_error(error, ctx):
 async def hug(ctx, username):
     if len(ctx.message.mentions) > 0:
       user = ctx.message.mentions[0]
-      msgs = ["https://cdn.discordapp.com/attachments/496005430254764042/497891785323053056/discord-avatar30092018.png", "https://cdn.discordapp.com/attachments/496005430254764042/497891785323053056/discord-avatar30092018.png"]
+      msgs = ["https://cdn.nekos.life/hug/5D5D.gif", "https://cdn.nekos.life/hug/B1B1.gif", "https://cdn.nekos.life/hug/8989.gif", "https://cdn.nekos.life/hug/2929.gif", "https://cdn.nekos.life/hug/C1C1.gif", "https://cdn.nekos.life/hug/3939.gif", "https://cdn.nekos.life/hug/hug774.gif", "https://cdn.nekos.life/hug/hug13142.gif", "https://cdn.nekos.life/hug/A9A9.gif", "https://cdn.nekos.life/hug/8181.gif", "https://cdn.nekos.life/hug/hug8504.gif", "https://cdn.nekos.life/hug/hug3093.gif", "https://cdn.nekos.life/hug/3535.gif", "https://cdn.nekos.life/hug/2D2D.gif", "https://cdn.nekos.life/hug/4D4D.gif", "https://cdn.nekos.life/hug/hug6185.gif", "https://cdn.nekos.life/hug/9D9D.gif", "https://cdn.nekos.life/hug/hug2320.gif"]
       rdm = random.choice(msgs)
       embed = discord.Embed(title="**{}** hugs **{}**.".format(ctx.message.author.name, user.name), color=0xfe2ef7)
       embed.set_image(url=rdm)
