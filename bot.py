@@ -35,8 +35,8 @@ async def hello(ctx):
     await bot.say("Hello! :smile:")
     print('Someone used command (ID: !hello). The command was successfully executed.')
     
-@bot.command
-async def t():
+@bot.command(pass_context=True)
+async def t(ctx):
     await bot.say("**Online**! :white_check_mark:")
 
 @bot.command(pass_context=True)
