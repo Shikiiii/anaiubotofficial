@@ -78,13 +78,13 @@ async def mute(ctx, usr, *reason):
         await bot.say(embed=embed)
         print("{} used command (ID: !mute), the command was successfully executed.".format(ctx.message.author.name))
     else:
-        await bot.say("You need to mention a user!".format(ctx.message.author.name))
+        await bot.say(":x: | You need to mention a user!".format(ctx.message.author.name))
         print("{} used command (ID: !mute), but declined for `not mentioning a user`.".format(ctx.message.author.name))
 
 @mute.error
 async def mute_error(error, ctx):
     if isinstance(error, commands.CheckFailure):
-        await ctx.bot.say("Hey, {}! Don't try to use me when I don't want to, baka. **(You don't have permission to use this command!**)".format(ctx.message.author.name))
+        await ctx.bot.say(":x: | Hey, {}! Don't try to use me when I don't want to, baka. **(You don't have permission to use this command!**)".format(ctx.message.author.name))
         print("{} used command (ID: !mute), but declined for `no permissions`.".format(ctx.message.author.name))
 
 @bot.command(pass_context=True)
@@ -101,13 +101,13 @@ async def warn(ctx, usr, *reason):
         await bot.say(embed=embed)
         print("{} used command (ID: !warn), the command was successfully executed.".format(ctx.message.author.name))
     else:
-        await bot.say("You need to mention a user!".format(ctx.message.author.name))
+        await bot.say(":x: | You need to mention a user!".format(ctx.message.author.name))
         print("{} used command (ID: !warn), but declined for `not mentioning a user`.".format(ctx.message.author.name))
 
 @warn.error
 async def warn_error(error, ctx):
     if isinstance(error, commands.CheckFailure):
-        await ctx.bot.say("Hey, {}! Don't try to use me when I don't want to, baka. **(You don't have permission to use this command!**)".format(ctx.message.author.name))
+        await ctx.bot.say(":x: | Hey, {}! Don't try to use me when I don't want to, baka. **(You don't have permission to use this command!**)".format(ctx.message.author.name))
         print("{} used command (ID: !warn), but declined for `no permissions`.".format(ctx.message.author.name))
 
 @bot.command(pass_context=True)
@@ -124,13 +124,13 @@ async def kick(ctx, usr, *reason):
         await bot.say(embed=embed)
         print("{} used command (ID: !kick), the command was successfully executed.".format(ctx.message.author.name))
     else:
-        await bot.say("You need to mention a user!".format(ctx.message.author.name))
+        await bot.say(":x: | You need to mention a user!".format(ctx.message.author.name))
         print("{} used command (ID: !kick), but declined for `not mentioning a user`.".format(ctx.message.author.name))
 
 @kick.error
 async def kick_error(error, ctx):
     if isinstance(error, commands.CheckFailure):
-        await ctx.bot.say("Hey, {}! Don't try to use me when I don't want to, baka. **(You don't have permission to use this command!**)".format(ctx.message.author.name))
+        await ctx.bot.say(":x: | Hey, {}! Don't try to use me when I don't want to, baka. **(You don't have permission to use this command!**)".format(ctx.message.author.name))
         print("{} used command (ID: !kick), but declined for `no permissions`.".format(ctx.message.author.name))
 
 @bot.command(pass_context=True)
@@ -147,13 +147,13 @@ async def ban(ctx, usr, *reason):
         await bot.ban(user)
         print("{} used command (ID: !ban), the command was successfully executed.".format(ctx.message.author.name))
     else:
-        await bot.say("You need to mention a user!".format(ctx.message.author.name))
+        await bot.say(":x: | You need to mention a user!".format(ctx.message.author.name))
         print("{} used command (ID: !ban), but declined for `not mentioning a user`.".format(ctx.message.author.name))
 
 @ban.error
 async def ban_error(error, ctx):
     if isinstance(error, commands.CheckFailure):
-        await ctx.bot.say("Hey, {}! Don't try to use me when I don't want to, baka. **(You don't have permission to use this command!**)".format(ctx.message.author.name))
+        await ctx.bot.say(":x: | Hey, {}! Don't try to use me when I don't want to, baka. **(You don't have permission to use this command!**)".format(ctx.message.author.name))
         print("{} used command (ID: !ban), but declined for `no permissions`.".format(ctx.message.author.name))
 
 @bot.command(pass_context=True)
@@ -165,7 +165,7 @@ async def pfp(ctx):
         await bot.say(embed=embed)
         print("{} used command (ID: !pfp), the command was successfully executed.".format(ctx.message.author.name))
     else:
-        await bot.say("You need to mention a user!")
+        await bot.say(":x: | You need to mention a user!")
         print("{} used a command (ID: !pfp), but got declined for `not mentioning a user`.")
 
 @bot.command(pass_context=True)
@@ -184,7 +184,7 @@ async def unban(ctx, *username):
 @unban.error
 async def unban_error(error, ctx):
     if isinstance(error, commands.CheckFailure):
-        await ctx.bot.say("Hey, {}! Don't try to use me when I don't want to, baka. **(You don't have permission to use this command!**)".format(ctx.message.author.name))
+        await ctx.bot.say(":x: | Hey, {}! Don't try to use me when I don't want to, baka. **(You don't have permission to use this command!**)".format(ctx.message.author.name))
         print("{} used command (ID: !unban), but declined for `no permissions`.".format(ctx.message.author.name))
 
 @bot.command(pass_context=True)
@@ -200,7 +200,7 @@ async def unmute(ctx, usr):
         await bot.remove_roles(usr, role)
         print("{} used command (ID: !unmute), the command was successfully executed.".format(ctx.message.author.name))
     else:
-        await bot.say("You need to mention a user!".format(ctx.message.author.name))
+        await bot.say(":x: | You need to mention a user!".format(ctx.message.author.name))
         print("{} used command (ID: !unmute), but declined for `not mentioning a user`.".format(ctx.message.author.name))
 
 @unmute.error
@@ -256,12 +256,12 @@ async def kiss(ctx, username):
       embed.set_image(url=rdm)
       await bot.say(embed=embed)
     else:
-      await bot.say("You need to mention a user to kiss him/her!")    
+      await bot.say(":x: | You need to mention a user to kiss him/her!")    
 
 @kiss.error
 async def kiss_error(error, ctx):
     if isinstance(error, commands.CommandOnCooldown):
-        await bot.say("Hey, {}! Sorry but this command has a cooldown of **10 seconds**, please try again in **{}** seconds.".format(ctx.message.author.name, round(error.retry_after, 1)))
+        await bot.say(":x: | Hey, **{}**! Sorry but this command has a cooldown of 10 seconds, please try again in **{}** seconds.".format(ctx.message.author.name, round(error.retry_after, 1)))
     
 @bot.command(pass_context=True)
 @commands.cooldown(1, 10, commands.BucketType.user)
@@ -274,7 +274,12 @@ async def hug(ctx, username):
       embed.set_image(url=rdm)
       await bot.say(embed=embed)
     else:
-      await bot.say("You need to mention a user to hug him/her!")
+      await bot.say(":x: | You need to mention a user to hug him/her!")
+    
+@hug.error
+async def hug_error(error, ctx):
+    if isinstance(error, commands.CommandOnCooldown):
+        await bot.say(":x: | Hey, **{}**! Sorry but this command has a cooldown of 10 seconds, please try again in **{}** seconds.".format(ctx.message.author.name, round(error.retry_after, 1)))
     
 @bot.command(pass_context=True)
 @commands.cooldown(1, 10, commands.BucketType.user)
@@ -287,7 +292,12 @@ async def slap(ctx, username):
       embed.set_image(url=rdm)
       await bot.say(embed=embed)
     else:
-      await bot.say("You need to mention a user to slap him/her!")
+      await bot.say(":x: | You need to mention a user to slap him/her!")
+    
+@slap.error
+async def slap_error(error, ctx):
+    if isinstance(error, commands.CommandOnCooldown):
+        await bot.say(":x: | Hey, **{}**! Sorry but this command has a cooldown of 10 seconds, please try again in **{}** seconds.".format(ctx.message.author.name, round(error.retry_after, 1)))
     
 @bot.command(pass_context=True)
 @commands.cooldown(1, 10, commands.BucketType.user)
@@ -300,7 +310,12 @@ async def pet(ctx, username):
       embed.set_image(url=rdm)
       await bot.say(embed=embed)
     else:
-      await bot.say("You need to mention a user to pet him/her!")
+      await bot.say(":x: | You need to mention a user to pet him/her!")
+    
+@pet.error
+async def pet_error(error, ctx):
+    if isinstance(error, commands.CommandOnCooldown):
+        await bot.say(":x: | Hey, **{}**! Sorry but this command has a cooldown of 10 seconds, please try again in **{}** seconds.".format(ctx.message.author.name, round(error.retry_after, 1)))
     
 bot.command(pass_context=True)
 @commands.cooldown(1, 10, commands.BucketType.user)
@@ -313,7 +328,12 @@ async def bite(ctx, username):
       embed.set_image(url=rdm)
       await bot.say(embed=embed)
     else:
-      await bot.say("You need to mention a user to bite him/her!")
+      await bot.say(":x: | You need to mention a user to bite him/her!")
+    
+@bite.error
+async def bite_error(error, ctx):
+    if isinstance(error, commands.CommandOnCooldown):
+        await bot.say(":x: | Hey, **{}**! Sorry but this command has a cooldown of 10 seconds, please try again in **{}** seconds.".format(ctx.message.author.name, round(error.retry_after, 1)))
 
     
 @bot.command(pass_context=True)
@@ -327,7 +347,12 @@ async def tickle(ctx, username):
       embed.set_image(url=rdm)
       await bot.say(embed=embed)
     else:
-      await bot.say("You need to mention a user to tickle him/her!")
+      await bot.say(":x: | You need to mention a user to tickle him/her!")
+
+@tickle.error
+async def tickle_error(error, ctx):
+    if isinstance(error, commands.CommandOnCooldown):
+        await bot.say(":x: | Hey, **{}**! Sorry but this command has a cooldown of 10 seconds, please try again in **{}** seconds.".format(ctx.message.author.name, round(error.retry_after, 1)))
     
 @bot.command(pass_context=True)
 @commands.cooldown(1, 10, commands.BucketType.user)
@@ -337,5 +362,10 @@ async def cry(ctx):
     embed = discord.Embed(title="**{}** is crying...".format(ctx.message.author.name), color=0xfe2ef7)
     embed.set_image(url=rdm)
     await bot.say(embed=embed)
+    
+@cry.error
+async def cry_error(error, ctx):
+    if isinstance(error, commands.CommandOnCooldown):
+        await bot.say(":x: | Hey, **{}**! Sorry but this command has a cooldown of 10 seconds, please try again in **{}** seconds.".format(ctx.message.author.name, round(error.retry_after, 1)))
 
 bot.run(os.environ.get("token"))
