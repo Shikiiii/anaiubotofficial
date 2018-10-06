@@ -260,7 +260,7 @@ async def kiss(ctx, username):
     
 @kiss.error
 async def kiss_error(error, ctx):
-    if isinstance(error, commands.CheckFailure):
+    if isinstance(error, commands.CommandOnCooldown):
         await bot.say("Hey, {}! Sorry but this command has a cooldown of **10 seconds**, please try again in **{}** seconds.".format(ctx.message.author.name, retry_after))
     
 @bot.command(pass_context=True)
