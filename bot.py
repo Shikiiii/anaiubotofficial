@@ -6,7 +6,9 @@ from itertools import cycle
 import aiohttp
 import random
 import os
+from discord.voice_client import VoiceClient
 
+startup_extension = ["Music"]
 bot = commands.Bot(command_prefix='!')
 bot.remove_command('help')
 
@@ -312,5 +314,17 @@ async def tickle(ctx, username):
       await bot.say(embed=embed)
     else:
       await bot.say("You need to mention a user to tickle him/her!")
+    
+class Main_Commands():
+        def __init__(self, bot):
+         self.bot = bot
+        
+if __name__ "" "__main__":
+    for extension in startup_extensions:
+        try:
+            bot.load_extension(extension)
+        expect Expection as e:
+            exc = '{}: {}'.format(type(e).__name__, e)
+            print("Failed to load extension")
 
 bot.run(os.environ.get("token"))
