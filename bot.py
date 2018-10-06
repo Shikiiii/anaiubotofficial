@@ -328,7 +328,7 @@ async def tickle(ctx, username):
 @bot.command(pass_context=True)
 @commands.cooldown(1, 10, commands.BucketType.user)
 async def cry(ctx):
-    msgs = []
+    msgs = ["https://media.discordapp.net/attachments/435485699140091906/498047815126351882/Untitled-1.png?width=580&height=326", "https://media.discordapp.net/attachments/435485699140091906/498047830225715200/70864595_p0_master1200.jpg?width=230&height=326"]
     rdm = random.choice(msgs)
     embed = discord.Embed(title="**{}** is crying...".format(ctx.message.author.name), color=0xfe2ef7)
     embed.set_image(url=rdm)
