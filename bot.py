@@ -317,7 +317,7 @@ async def pet_error(error, ctx):
     if isinstance(error, commands.CommandOnCooldown):
         await bot.say(":x: | Hey, **{}**! Sorry but this command has a cooldown of 10 seconds, please try again in **{}** seconds.".format(ctx.message.author.name, round(error.retry_after, 1)))
     
-bot.command(pass_context=True)
+@bot.command(pass_context=True)
 @commands.cooldown(1, 10, commands.BucketType.user)
 async def bite(ctx, username):
     if len(ctx.message.mentions) > 0:
