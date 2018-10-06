@@ -242,7 +242,7 @@ async def reminder(ctx):
     await bot.say(switch(ctx.message.author.name.lower()))
 
 @bot.command(pass_context=True)
-@bot.cooldown(1, 10, commands.BucketType.user)
+@commands.cooldown(1, 10, commands.BucketType.user)
 async def kiss(ctx, username):
     if len(ctx.message.mentions) > 0:
       user = ctx.message.mentions[0]
