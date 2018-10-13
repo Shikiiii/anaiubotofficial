@@ -378,7 +378,7 @@ async def embedimg(ctx, *reason):
     
 @bot.command(pass_context=True)
 async def roles(ctx):
-    embed = discord.Embed(color=0xff0000)
+    embed = discord.Embed(color=0x5882FA)
     embed.set_author(name="All server roles, listed here:", icon_url=ctx.message.author.avatar_url)
     embed.set_footer(text="Server leader: Thegamesbg#2392 | Command executed by {}".format(ctx.message.author.name))
     i = 0
