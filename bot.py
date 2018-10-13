@@ -287,7 +287,7 @@ async def hug_error(error, ctx):
 async def slap(ctx, username):
     if len(ctx.message.mentions) > 0:
       user = ctx.message.mentions[0]
-      msgs = ["https://cdn.discordapp.com/attachments/496005430254764042/497891785323053056/discord-avatar30092018.png", "https://cdn.discordapp.com/attachments/496005430254764042/497891785323053056/discord-avatar30092018.png"]
+      msgs = ["https://cdn.nekos.life/slap/slap17007.gif", "https://cdn.nekos.life/slap/slap6185.gif", "https://cdn.nekos.life/slap/slap74863696a58673d3d2d3332323535353132312e3134376463306136613061386265653434333036353633313437321547.gif", "https://cdn.nekos.life/slap/slap3866.gif", "https://cdn.nekos.life/slap/slap3093.gif", "https://cdn.nekos.life/slap/slap20099.gif", "https://cdn.nekos.life/slap/slap19326.gif", "https://cdn.nekos.life/slap/slap8504.gif", "https://cdn.nekos.life/slap/slap12369.gif", "https://cdn.nekos.life/slap/slap10823.gif"]
       rdm = random.choice(msgs)
       embed = discord.Embed(title="**{}** slaps **{}**.".format(ctx.message.author.name, user.name), color=0xfe2ef7)
       embed.set_image(url=rdm)
@@ -303,19 +303,19 @@ async def slap_error(error, ctx):
     
 @bot.command(pass_context=True)
 @commands.cooldown(1, 10, commands.BucketType.user)
-async def pet(ctx, username):
+async def pat(ctx, username):
     if len(ctx.message.mentions) > 0:
       user = ctx.message.mentions[0]
-      msgs = ["https://cdn.discordapp.com/attachments/496005430254764042/497891785323053056/discord-avatar30092018.png", "https://cdn.discordapp.com/attachments/496005430254764042/497891785323053056/discord-avatar30092018.png"]
+      msgs = ["https://cdn.weeb.sh/images/rkSN7g91M.gif", "https://cdn.weeb.sh/images/rJMskkFvb.gif", "https://cdn.weeb.sh/images/Sy6Gektw-.gif", "https://cdn.weeb.sh/images/rJ4E1ep7f.gif", "https://cdn.weeb.sh/images/SJLaWWRSG.gif", "https://cdn.weeb.sh/images/HkJ2VknqG.gif", "https://cdn.weeb.sh/images/Bk4Ry1KD-.gif", "https://cdn.weeb.sh/images/r12R1kYPZ.gif", "https://cdn.weeb.sh/images/H1jgekFwZ.gif"]
       rdm = random.choice(msgs)
-      embed = discord.Embed(title="**{}** pets **{}**. :3".format(ctx.message.author.name, user.name), color=0xfe2ef7)
+      embed = discord.Embed(title="**{}** pats **{}**. :3".format(ctx.message.author.name, user.name), color=0xfe2ef7)
       embed.set_image(url=rdm)
       await bot.say(embed=embed)
     else:
-      await bot.say(":x: | You need to mention a user to pet him/her!")
+      await bot.say(":x: | You need to mention a user to pat him/her!")
     
 @pet.error
-async def pet_error(error, ctx):
+async def pat_error(error, ctx):
     if isinstance(error, commands.CommandOnCooldown):
         await bot.say(":x: | Hey, **{}**! Sorry but this command has a cooldown of 10 seconds, please try again in **{}** seconds.".format(ctx.message.author.name, round(error.retry_after, 1)))
     
