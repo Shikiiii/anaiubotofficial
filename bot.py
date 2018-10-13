@@ -271,7 +271,7 @@ async def hug(ctx, username):
       user = ctx.message.mentions[0]
       msgs = ["https://cdn.nekos.life/hug/5D5D.gif", "https://cdn.nekos.life/hug/B1B1.gif", "https://cdn.nekos.life/hug/8989.gif", "https://cdn.nekos.life/hug/2929.gif", "https://cdn.nekos.life/hug/C1C1.gif", "https://cdn.nekos.life/hug/3939.gif", "https://cdn.nekos.life/hug/hug774.gif", "https://cdn.nekos.life/hug/hug13142.gif", "https://cdn.nekos.life/hug/A9A9.gif", "https://cdn.nekos.life/hug/8181.gif", "https://cdn.nekos.life/hug/hug8504.gif", "https://cdn.nekos.life/hug/hug3093.gif", "https://cdn.nekos.life/hug/3535.gif", "https://cdn.nekos.life/hug/2D2D.gif", "https://cdn.nekos.life/hug/4D4D.gif", "https://cdn.nekos.life/hug/hug6185.gif", "https://cdn.nekos.life/hug/9D9D.gif", "https://cdn.nekos.life/hug/hug2320.gif"]
       rdm = random.choice(msgs)
-      embed = discord.Embed(title="**{}** hugs **{}**.".format(ctx.message.author.name, user.name), color=0xfe2ef7)
+      embed = discord.Embed(title="**{}** hugs **{}**. :heart:".format(ctx.message.author.name, user.name), color=0xfe2ef7)
       embed.set_image(url=rdm)
       await bot.say(embed=embed)
     else:
@@ -291,6 +291,7 @@ async def slap(ctx, username):
       rdm = random.choice(msgs)
       embed = discord.Embed(title="**{}** slaps **{}**.".format(ctx.message.author.name, user.name), color=0xfe2ef7)
       embed.set_image(url=rdm)
+      embed.set_footer(text="Ouch, that hurts!")
       await bot.say(embed=embed)
     else:
       await bot.say(":x: | You need to mention a user to slap him/her!")
@@ -307,7 +308,7 @@ async def pet(ctx, username):
       user = ctx.message.mentions[0]
       msgs = ["https://cdn.discordapp.com/attachments/496005430254764042/497891785323053056/discord-avatar30092018.png", "https://cdn.discordapp.com/attachments/496005430254764042/497891785323053056/discord-avatar30092018.png"]
       rdm = random.choice(msgs)
-      embed = discord.Embed(title="**{}** pets **{}**.".format(ctx.message.author.name, user.name), color=0xfe2ef7)
+      embed = discord.Embed(title="**{}** pets **{}**. :3".format(ctx.message.author.name, user.name), color=0xfe2ef7)
       embed.set_image(url=rdm)
       await bot.say(embed=embed)
     else:
@@ -327,6 +328,7 @@ async def bite(ctx, username):
       rdm = random.choice(msgs)
       embed = discord.Embed(title="**{}** bites **{}**.".format(ctx.message.author.name, user.name), color=0xfe2ef7)
       embed.set_image(url=rdm)
+      embed.set_footer(text="Ouch, that hurts!")
       await bot.say(embed=embed)
     else:
       await bot.say(":x: | You need to mention a user to bite him/her!")
