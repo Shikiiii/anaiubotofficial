@@ -368,18 +368,23 @@ async def cry(ctx):
 async def cry_error(error, ctx):
     if isinstance(error, commands.CommandOnCooldown):
         await bot.say(":x: | Hey, **{}**! Sorry but this command has a cooldown of 10 seconds, please try again in **{}** seconds.".format(ctx.message.author.name, round(error.retry_after, 1)))
-
-@bot.command(pass_context=True)
-async def embedtest(ctx):
-    embed = discord.Embed()
-    embed.set_image(url="https://cdn.nekos.life/kiss/8585.gif")
-    await bot.say(embed=embed)
     
 @bot.command(pass_context=True)
 async def embedimg(ctx, *reason):
     rsn = " ".join(reason)
     embed = discord.Embed()
     embed.set_image(url="{}".format(rsn))
+    await bot.say(embed=embed)
+    
+@bot.command(pass_context=True)
+async def roles(ctx):
+    embed = discord.Embed(color=0xff0000)
+    embed.set_author(name="Anime News server roles:", icon_url=ctx.message.author.avatar_url)
+    embed.set_footer(text="Server leader: Thegamesbg#2392 | Command executed by {}".format(ctx.message.author.name))
+    i = 0
+    for role in ctx.message.server.roles:
+        embed.add_field(name=i, value=role.name, inline=False)
+        i = i+1
     await bot.say(embed=embed)
     
 bot.run(os.environ.get("token"))
