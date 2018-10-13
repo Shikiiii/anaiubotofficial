@@ -314,7 +314,7 @@ async def pat(ctx, username):
     else:
       await bot.say(":x: | You need to mention a user to pat him/her!")
     
-@pet.error
+@pat.error
 async def pat_error(error, ctx):
     if isinstance(error, commands.CommandOnCooldown):
         await bot.say(":x: | Hey, **{}**! Sorry but this command has a cooldown of 10 seconds, please try again in **{}** seconds.".format(ctx.message.author.name, round(error.retry_after, 1)))
