@@ -22,6 +22,7 @@ async def on_ready():
 async def on_member_join(member):
     welcomeChannel = discord.utils.get(member.server.channels, name="welcome-n-goodbye")
     role = discord.utils.get(member.server.roles, name="User")
+    channel = discord.utils.get(member.server.channels, name="rules")
     await bot.add_roles(member, role)
     await bot.send_message(welcomeChannel, "Welcome **{}**! Thank you for joining Anime News ○ Network! Please read {} before you start using the server, so you don't have to face punishments while doing things. Enjoy your stay at Anime News! :heart:".format(member.name, channel.mention))
     
