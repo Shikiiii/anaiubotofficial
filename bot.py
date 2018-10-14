@@ -408,9 +408,9 @@ async def on_message(message):
     with open('users.json', 'r') as f:
         users = json.load(f)
 
-    self.await update_data(users, message.author)
-    self.await add_experience(users, message.author, 5)
-    self.await level.up(users, message.author, message.channel)
+    await update_data(users, message.author)
+    await add_experience(users, message.author, 5)
+    await level.up(users, message.author, message.channel)
 
 
     with open('users.json', 'w') as f:
