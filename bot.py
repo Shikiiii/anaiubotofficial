@@ -384,10 +384,8 @@ async def roles(ctx):
     embed = discord.Embed(color=0x5882FA)
     embed.set_author(name="All server roles, listed here:", icon_url=ctx.message.author.avatar_url)
     embed.set_footer(text="Server leader: Thegamesbg#2392 | Command executed by {}".format(ctx.message.author.name))
-    i = 0
     for role in ctx.message.server.roles:
-        embed.add_field(name=i, value=role.name, inline=False)
-        i = i+1
+        embed.add_field(name="Server roles:", value=role.name, inline=False)
     await bot.say(embed=embed)
     
 @roles.error
