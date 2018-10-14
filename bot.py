@@ -403,7 +403,7 @@ async def roles_error(error, ctx):
     if isinstance(error, commands.CommandOnCooldown):
         await bot.say(":x: | Hey, **{}**! Sorry but this command has a cooldown of 300 seconds, please try again in **{}** seconds.".format(ctx.message.athor.name, round(error.retry_after, 1)))
 
-        @bot.event
+@bot.event
 async def on_message(message):
     with open('users.json', 'r') as f:
         users = json.load(f)
@@ -415,6 +415,8 @@ async def on_message(message):
 
     with open('users.json', 'w') as f:
         json.dump(users, f)
+        
+    bot.process_commands(message)
 
 async def update_data(users, user):
     if not user.id in users:
