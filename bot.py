@@ -379,6 +379,7 @@ async def embedimg(ctx, *reason):
     await bot.say(embed=embed)
     
 @bot.command(pass_context=True)
+@commands.cooldown(1, 300, commands.BucketType.user)
 async def roles(ctx):
     embed = discord.Embed(color=0x5882FA)
     embed.set_author(name="All server roles, listed here:", icon_url=ctx.message.author.avatar_url)
@@ -390,7 +391,6 @@ async def roles(ctx):
     await bot.say(embed=embed)
     
 @roles.error
-@commands.cooldown(1, 300, commands.BucketType.user)
 async def roles_error(error, ctx):
     if isinstance(error, commands.CommandOnCooldown):
         await bot.say(":x: | Hey, **{}**! Sorry but this command has a cooldown of 300 seconds, please try again in **{}** seconds.".format(ctx.message.athor.name, round(error.retry_after, 1)))
