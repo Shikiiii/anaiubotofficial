@@ -393,6 +393,6 @@ async def roles(ctx):
 @roles.error
 async def roles_error(error, ctx):
     if isinstance(error, commands.CommandOnCooldown):
-        await bot.say(":x: | Hey, **{}**! Sorry but this command has a cooldown of 300 seconds, please try again in **{}** seconds.".format(ctx.message.athor.name, round(error.retry_after, 1)))
+        await bot.say(":x: | Hey, **{}**! Sorry but this command has a cooldown of 300 seconds, please try again in **{}** seconds.".format(ctx.message.author.name, round(error.retry_after, 1)))
 
 bot.run(os.environ.get("token"))
