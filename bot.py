@@ -6,6 +6,7 @@ from itertools import cycle
 import aiohttp
 import random
 import os
+import json
 from discord.voice_client import VoiceClient
 
 bot = commands.Bot(command_prefix='!')
