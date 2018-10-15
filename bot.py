@@ -438,7 +438,7 @@ async def level_up(users, user, channel):
     
     if lvl_end > 5:
         reward5 = discord.utils.get(user.server.roles, name="5Level")
-        await bot.send_message(channel, "", ":star: | **{}** reached a milestone! Reward: **5Level Role**".format(user.name))
+        await bot.send_message(channel, ":star: | **{}** reached a milestone! Reward: **5Level Role**".format(user.name))
         await bot.add_roles(user, reward5)
        
 bot.run(os.environ.get("token"))
