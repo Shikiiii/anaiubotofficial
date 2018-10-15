@@ -409,7 +409,7 @@ async def on_message(message):
 
     await update_data(users, message.author)
     await add_experience(users, message.author, 5)
-    await level.up(users, message.author, message.channel)
+    await level_up(users, message.author, message.channel)
 
 
     with open('users.json', 'w') as f:
