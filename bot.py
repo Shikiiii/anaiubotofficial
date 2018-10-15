@@ -17,6 +17,41 @@ bot.remove_command('help')
 
 players = []
 
+def switch(argument):
+    switcher = {
+        "blackyy": "3",
+        "₮hegamesbg": "2",
+        "teaboi": "1"
+    }
+    return switcher.get(argument, "Invalid user")
+
+voice_client = None
+
+async def update_data(users, user):
+    if not user.id in users:
+        users[user.id] = {}
+        users[user.id]['experience'] = 0
+        users[user.id]['level'] = 1
+
+async def add_experience(users, user, exp):
+    users[user.id]['experience'] += exp
+
+async def level_up(users, user, channel):
+    experience = users[user.id]['experience']
+    lvl_start = users[user.id]['level']
+    lvl_end = int(experience ** (1/2))
+
+    if lvl_start < lvl_end:
+        embed = discord.Embed(title="Congratulations! You leveled up. You are now {} level.".format(lvl_end))
+        embed.set_author(name="{}".format(user.name), icon_url=user.avatar_url)
+        await bot.send_message(channel, "", embed=embed)
+        users[user.id]['level'] = lvl_end
+    
+    if lvl_end > 4:
+        reward5 = discord.utils.get(user.server.roles, name="5Level")
+        await bot.send_message(channel, ":star: | **{}** reached a milestone! Reward: **5Level Role**".format(user.name))
+        await bot.add_roles(user, reward5)
+
 @bot.command(pass_context=True)
 async def hello(ctx):
     await bot.say("Hello! :smile:")
@@ -207,7 +242,6 @@ async def magicball(ctx, *reason):
     await bot.say(embed=embed)
     print("{} used !magicball, question: {}".format(ctx.message.author.name, rsn))
 
-voice_client = None
 @bot.command(pass_context=True)
 async def join(ctx):
     await bot.say("✅ Successfully ``joined`` your voice channel!")
@@ -219,15 +253,6 @@ async def leave(ctx):
     await bot.say("✅ Successfully ``disconnected`` your voice channel!")
     await voice_client.disconnect()
     voice_client = None
-
-def switch(argument):
-    switcher = {
-        "blackyy": "3",
-        "₮hegamesbg": "2",
-        "teaboi": "1"
-    }
-    return switcher.get(argument, "Invalid user")
-
 
 @bot.command(pass_context=True)
 async def reminder(ctx):
@@ -433,30 +458,5 @@ async def on_message(message):
             json.dump(users, f)
 
     await bot.process_commands(message)
-
-async def update_data(users, user):
-    if not user.id in users:
-        users[user.id] = {}
-        users[user.id]['experience'] = 0
-        users[user.id]['level'] = 1
-
-async def add_experience(users, user, exp):
-    users[user.id]['experience'] += exp
-
-async def level_up(users, user, channel):
-    experience = users[user.id]['experience']
-    lvl_start = users[user.id]['level']
-    lvl_end = int(experience ** (1/2))
-
-    if lvl_start < lvl_end:
-        embed = discord.Embed(title="Congratulations! You leveled up. You are now {} level.".format(lvl_end))
-        embed.set_author(name="{}".format(user.name), icon_url=user.avatar_url)
-        await bot.send_message(channel, "", embed=embed)
-        users[user.id]['level'] = lvl_end
-    
-    if lvl_end > 4:
-        reward5 = discord.utils.get(user.server.roles, name="5Level")
-        await bot.send_message(channel, ":star: | **{}** reached a milestone! Reward: **5Level Role**".format(user.name))
-        await bot.add_roles(user, reward5)
        
 bot.run(os.environ.get("token"))
