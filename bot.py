@@ -32,9 +32,7 @@ async def on_member_join(member):
 
     with open('users.json', 'w') as f:
         json.dump(users, f)
-    
-bot.process_commands(message)
-    
+     
 @bot.event
 async def on_member_remove(member):
     welcomeChannel = discord.utils.get(member.server.channels, name="welcome-n-goodbye")
@@ -415,6 +413,8 @@ async def on_message(message):
 
     with open('users.json', 'w') as f:
         json.dump(users, f)
+        
+    bot.process_commands(message)
 
 async def update_data(users, user):
     if not user.id in users:
