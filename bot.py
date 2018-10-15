@@ -27,7 +27,7 @@ def switch(argument):
 
 voice_client = None
 
-async def update_data(users, user):
+async def try_create_user(users, user):
     if not user.id in users:
         users[user.id] = {}
         users[user.id]['experience'] = 0
