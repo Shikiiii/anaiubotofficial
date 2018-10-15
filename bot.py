@@ -43,10 +43,14 @@ async def level_up(users, user, channel):
     lvl_end = int(experience ** (1/2))
 
     if lvl_start < lvl_end:
-        embed = discord.Embed(title="Congratulations! You leveled up. You are now {} level.".format(lvl_end))
-        embed.set_author(name="{}".format(user.name), icon_url=user.avatar_url)
-        await bot.send_message(channel, "", embed=embed)
+        await bot.send_message(channel, "{} leveled up to level {}!".format(user.mention, lvl_end))
         users[user.id]['level'] = lvl_end
+
+        if lvl_end == 5:
+            reward5 = discord.utils.get(user.server.roles, name="5Level")
+            await bot.send_message(channel,
+                                   ":star: | **{}** reached a milestone! Reward: **5Level Role**".format(user.name))
+            await bot.add_roles(user, reward5)
     
     if lvl_end === 5:
         reward5 = discord.utils.get(user.server.roles, name="5Level")
