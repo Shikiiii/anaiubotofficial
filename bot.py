@@ -393,10 +393,10 @@ async def roles_error(error, ctx):
 @bot.command
 async def report(ctx, usr, reason, *message):
     rsn = " ".join(reason)
-    user = ctx.message.mentions[0]
+    usr = ctx.message.mentions[0]
     channel1 = discord.utils.get(member.server.channels, name="report-logs")
     await bot.send_message(channel1, "**{}** has been reported by {} for {}. Moar information: {}".format(user.name, ctx.message.author.name, rsn, msg) 
-    await bot.say("{} has been reported".format(user.name))
+    await bot.say("{} has been reported".format(usr))
         
 @bot.event
 async def on_member_join(member):
