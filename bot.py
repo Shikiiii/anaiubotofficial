@@ -17,31 +17,6 @@ bot.remove_command('help')
 
 players = []
 
-@bot.event
-async def on_ready():
-    await bot.change_presence(game=discord.Game(name='!help | Made by Thegamesbg#2392 with love.'))
-    print('Starting up...')
-  
-@bot.event
-async def on_member_join(member):
-    welcomeChannel = discord.utils.get(member.server.channels, name="welcome-n-goodbye")
-    role = discord.utils.get(member.server.roles, name="User")
-    channel = discord.utils.get(member.server.channels, name="rules")
-    await bot.add_roles(member, role)
-    await bot.send_message(welcomeChannel, "Welcome **{}**! Thank you for joining Anime News ○ Network! Please read {} before you start using the server, so you don't have to face punishments while doing things. Enjoy your stay at Anime News! :heart:".format(member.name, channel.mention))
-    with open('users.json', 'r') as f:
-        users = json.loads(f.read())
-
-    await try_create_user(users, member)
-
-    with open('users.json', 'w') as f:
-        json.dump(users, f)
-
-@bot.event
-async def on_member_remove(member):
-    welcomeChannel = discord.utils.get(member.server.channels, name="welcome-n-goodbye")
-    await bot.send_message(welcomeChannel, "Goodbye, **{}**! We thank you for using our server, but you left :C We are sorry if we did something to you. Come back if you want! :smile:".format(member.name))
-
 @bot.command(pass_context=True)
 async def hello(ctx):
     await bot.say("Hello! :smile:")
@@ -412,7 +387,32 @@ async def report(ctx, user, reason, *message):
         channel1 = discord.utils.get(ctx.message.author.server.channels, name="logs")
         await bot.send_message(channel1, "{} has been reported by {} for {}. Moar information: {}".format(user.name, ctx.message.author.name, reason, " ".join(message)))
         await bot.say("{} has been reported".format(user.name))
-        
+ 
+@bot.event
+async def on_ready():
+    await bot.change_presence(game=discord.Game(name='!help | Made by Thegamesbg#2392 with love.'))
+    print('Starting up...')
+  
+@bot.event
+async def on_member_join(member):
+    welcomeChannel = discord.utils.get(member.server.channels, name="welcome-n-goodbye")
+    role = discord.utils.get(member.server.roles, name="User")
+    channel = discord.utils.get(member.server.channels, name="rules")
+    await bot.add_roles(member, role)
+    await bot.send_message(welcomeChannel, "Welcome **{}**! Thank you for joining Anime News ○ Network! Please read {} before you start using the server, so you don't have to face punishments while doing things. Enjoy your stay at Anime News! :heart:".format(member.name, channel.mention))
+    with open('users.json', 'r') as f:
+        users = json.loads(f.read())
+
+    await try_create_user(users, member)
+
+    with open('users.json', 'w') as f:
+        json.dump(users, f)
+
+@bot.event
+async def on_member_remove(member):
+    welcomeChannel = discord.utils.get(member.server.channels, name="welcome-n-goodbye")
+    await bot.send_message(welcomeChannel, "Goodbye, **{}**! We thank you for using our server, but you left :C We are sorry if we did something to you. Come back if you want! :smile:".format(member.name))
+
 @bot.event
 async def on_message(message):
     if not message.author.bot:
