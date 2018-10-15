@@ -18,21 +18,6 @@ players = []
 async def on_ready():
     await bot.change_presence(game=discord.Game(name='!help | Made by Thegamesbg#2392 with love.'))
     print('Starting up...')
-
-@bot.event
-async def on_member_join(member):
-    welcomeChannel = discord.utils.get(member.server.channels, name="welcome-n-goodbye")
-    role = discord.utils.get(member.server.roles, name="User")
-    channel = discord.utils.get(member.server.channels, name="rules")
-    await bot.add_roles(member, role)
-    await bot.send_message(welcomeChannel, "Welcome **{}**! Thank you for joining Anime News ○ Network! Please read {} before you start using the server, so you don't have to face punishments while doing things. Enjoy your stay at Anime News! :heart:".format(member.name, channel.mention))
-    with open('users.json', 'r') as f:
-        users = json.load(f)
-
-    await update_data(users, member)
-
-    with open('users.json', 'w') as f:
-        json.dump(users, f)
      
 @bot.event
 async def on_member_remove(member):
@@ -402,6 +387,21 @@ async def roles_error(error, ctx):
     if isinstance(error, commands.CommandOnCooldown):
         await bot.say(":x: | Hey, **{}**! Sorry but this command has a cooldown of 300 seconds, please try again in **{}** seconds.".format(ctx.message.author.name, round(error.retry_after, 1)))
 
+@bot.event
+async def on_member_join(member):
+    welcomeChannel = discord.utils.get(member.server.channels, name="welcome-n-goodbye")
+    role = discord.utils.get(member.server.roles, name="User")
+    channel = discord.utils.get(member.server.channels, name="rules")
+    await bot.add_roles(member, role)
+    await bot.send_message(welcomeChannel, "Welcome **{}**! Thank you for joining Anime News ○ Network! Please read {} before you start using the server, so you don't have to face punishments while doing things. Enjoy your stay at Anime News! :heart:".format(member.name, channel.mention))
+    with open('users.json', 'r') as f:
+        users = json.load(f)
+
+    await update_data(users, member)
+
+    with open('users.json', 'w') as f:
+        json.dump(users, f)
+        
 @bot.event
 async def on_message(message):
     with open('users.json', 'r') as f:
