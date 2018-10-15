@@ -429,7 +429,7 @@ async def add_experience(users, user, exp):
 async def level_up(users, user, channel):
     experience = users[user.id]['experience']
     lvl_start = users[user.id]['level']
-    lvl_end = int(experience ** (1/8))
+    lvl_end = int(experience ** (1/2))
 
     if lvl_start < lvl_end:
         await client.send_message(channel, "{} leveled up to level {}!".format(user.mention, lvl_end))
