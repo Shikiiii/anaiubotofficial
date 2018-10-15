@@ -33,12 +33,13 @@ async def try_create_user(users, user):
         users[user.id]['experience'] = 0
         users[user.id]['level'] = 1
 
-async def add_experience(users, user, exp):
-    users[user.id]['experience'] += exp
+async def add_experience(users, user, channel, exp):
+    users[user.id]["experience"] += exp
+    await level_up(users, user, channel)
 
 async def level_up(users, user, channel):
-    experience = users[user.id]['experience']
-    lvl_start = users[user.id]['level']
+    experience = users[user.id]["experience"]
+    lvl_start = users[user.id]["level"]
     lvl_end = int(experience ** (1/2))
 
     if lvl_start < lvl_end:
