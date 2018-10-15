@@ -432,7 +432,7 @@ async def level_up(users, user, channel):
     lvl_end = int(experience ** (1/2))
 
     if lvl_start < lvl_end:
-        await client.send_message(channel, "{} leveled up to level {}!".format(user.mention, lvl_end))
+        await bot.send_message(channel, "{} leveled up to level {}!".format(user.mention, lvl_end))
         users[user.id]['level'] = lvl_end 
        
 bot.run(os.environ.get("token"))
