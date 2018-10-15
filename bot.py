@@ -40,9 +40,12 @@ async def add_experience(users, user, channel, exp):
 async def level_up(users, user, channel):
     experience = users[user.id]["experience"]
     lvl_start = users[user.id]["level"]
-    lvl_end = int(experience ** (1/2))
+    lvl_end = int(experience ** (1/6))
 
     if lvl_start < lvl_end:
+        embed = discord.Embed(title="Congratulations! You leveled up. You are now {} level.".format(lvl_end))
+        embed.set_author(name="{}".format(user.name), icon_url=user.avatar_url)
+        await bot.send_message(channel, "", embed=embed)
         await bot.send_message(channel, "{} leveled up to level {}!".format(user.mention, lvl_end))
         users[user.id]['level'] = lvl_end
 
