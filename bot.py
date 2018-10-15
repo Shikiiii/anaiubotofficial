@@ -25,6 +25,15 @@ async def on_member_join(member):
     channel = discord.utils.get(member.server.channels, name="rules")
     await bot.add_roles(member, role)
     await bot.send_message(welcomeChannel, "Welcome **{}**! Thank you for joining Anime News ○ Network! Please read {} before you start using the server, so you don't have to face punishments while doing things. Enjoy your stay at Anime News! :heart:".format(member.name, channel.mention))
+    with open('users.json', 'r') as f:
+        users = json.load(f)
+
+    await update_data(users, member)
+
+    with open('users.json', 'w') as f:
+        json.dump(users, f)
+    
+bot.process_commands(message)
     
 @bot.event
 async def on_member_remove(member):
@@ -394,4 +403,35 @@ async def roles_error(error, ctx):
     if isinstance(error, commands.CommandOnCooldown):
         await bot.say(":x: | Hey, **{}**! Sorry but this command has a cooldown of 300 seconds, please try again in **{}** seconds.".format(ctx.message.author.name, round(error.retry_after, 1)))
 
+@bot.event
+async def on_message(message):
+    with open('users.json', 'r') as f:
+        users = json.loads(f.read())
+
+    await update_data(users, message.author)
+    await add_experience(users, message.author, 5)
+    await level.up(users, message.author, message.channel)
+
+
+    with open('users.json', 'w') as f:
+        json.dump(users, f)
+
+async def update_data(users, user):
+    if not user.id in users:
+        users[user.id] = {}
+        users[user.id]['experience'] = 0
+        users[user.id]['level'] = 1
+
+async def add_experience(users, user, exp):
+    users[user.id]['experience'] += expect
+
+async def level_up(users, user, channel):
+    experience = users[user.id]['experience']
+    lvl_start = users[user.id]['level']
+    lvl_end = int(experience ** (1/20))
+
+    if lvl_start < lvl_end:
+        await client.send_message(channel, "{} leveled up to level {}!".format(user.mention, lvl_end))
+        users[user.id]['level'] = lvl_end 
+       
 bot.run(os.environ.get("token"))
