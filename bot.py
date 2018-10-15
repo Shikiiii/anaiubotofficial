@@ -30,9 +30,9 @@ async def on_member_join(member):
     await bot.add_roles(member, role)
     await bot.send_message(welcomeChannel, "Welcome **{}**! Thank you for joining Anime News ○ Network! Please read {} before you start using the server, so you don't have to face punishments while doing things. Enjoy your stay at Anime News! :heart:".format(member.name, channel.mention))
     with open('users.json', 'r') as f:
-        users = json.load(f)
+        users = json.loads(f.read())
 
-    await update_data(users, member)
+    await try_create_user(users, member)
 
     with open('users.json', 'w') as f:
         json.dump(users, f)
