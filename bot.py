@@ -424,7 +424,7 @@ async def update_data(users, user):
         users[user.id]['level'] = 1
 
 async def add_experience(users, user, exp):
-    users[user.id]['experience'] += expect
+    users[user.id]['experience'] += exp
 
 async def level_up(users, user, channel):
     experience = users[user.id]['experience']
