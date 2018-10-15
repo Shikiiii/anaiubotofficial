@@ -21,7 +21,22 @@ players = []
 async def on_ready():
     await bot.change_presence(game=discord.Game(name='!help | Made by Thegamesbg#2392 with love.'))
     print('Starting up...')
-     
+  
+@bot.event
+async def on_member_join(member):
+    welcomeChannel = discord.utils.get(member.server.channels, name="welcome-n-goodbye")
+    role = discord.utils.get(member.server.roles, name="User")
+    channel = discord.utils.get(member.server.channels, name="rules")
+    await bot.add_roles(member, role)
+    await bot.send_message(welcomeChannel, "Welcome **{}**! Thank you for joining Anime News ○ Network! Please read {} before you start using the server, so you don't have to face punishments while doing things. Enjoy your stay at Anime News! :heart:".format(member.name, channel.mention))
+    with open('users.json', 'r') as f:
+        users = json.load(f)
+
+    await update_data(users, member)
+
+    with open('users.json', 'w') as f:
+        json.dump(users, f)
+
 @bot.event
 async def on_member_remove(member):
     welcomeChannel = discord.utils.get(member.server.channels, name="welcome-n-goodbye")
@@ -390,29 +405,13 @@ async def roles_error(error, ctx):
     if isinstance(error, commands.CommandOnCooldown):
         await bot.say(":x: | Hey, **{}**! Sorry but this command has a cooldown of 300 seconds, please try again in **{}** seconds.".format(ctx.message.author.name, round(error.retry_after, 1)))
 
-@bot.command
-async def report(ctx, username, reason, *message):
+@bot.command(pass_context=True)
+async def report(ctx, user, reason, *message):
     if len(ctx.message.mentions) > 0:
         user = ctx.message.mentions[0]
-        rsn = " ".join(reason)
-        channel1 = discord.utils.get(member.server.channels, name="report-logs")
+        channel1 = discord.utils.get(ctx.message.author.server.channels, name="logs")
+        await bot.send_message(channel1, "{} has been reported by {} for {}. Moar information: {}".format(user.name, ctx.message.author.name, reason, " ".join(message)))
         await bot.say("{} has been reported".format(user.name))
-        await bot.send_message(channel1, "**{}** has been reported by {} for {}. Moar information: {}".format(user.name, ctx.message.author.name, rsn, message) 
-        
-@bot.event
-async def on_member_join(member):
-    welcomeChannel = discord.utils.get(member.server.channels, name="welcome-n-goodbye")
-    role = discord.utils.get(member.server.roles, name="User")
-    channel = discord.utils.get(member.server.channels, name="rules")
-    await bot.add_roles(member, role)
-    await bot.send_message(welcomeChannel, "Welcome **{}**! Thank you for joining Anime News ○ Network! Please read {} before you start using the server, so you don't have to face punishments while doing things. Enjoy your stay at Anime News! :heart:".format(member.name, channel.mention))
-    with open('users.json', 'r') as f:
-        users = json.load(f)
-
-    await update_data(users, member)
-
-    with open('users.json', 'w') as f:
-        json.dump(users, f)
         
 @bot.event
 async def on_message(message):
