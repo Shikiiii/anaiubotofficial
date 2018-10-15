@@ -391,13 +391,13 @@ async def roles_error(error, ctx):
         await bot.say(":x: | Hey, **{}**! Sorry but this command has a cooldown of 300 seconds, please try again in **{}** seconds.".format(ctx.message.author.name, round(error.retry_after, 1)))
 
 @bot.command
-async def report(ctx, user, reason, *message):
+async def report(ctx, username, reason, *message):
     if len(ctx.message.mentions) > 0:
         user = ctx.message.mentions[0]
         rsn = " ".join(reason)
         channel1 = discord.utils.get(member.server.channels, name="report-logs")
-        await bot.send_message(channel1, "**{}** has been reported by {} for {}. Moar information: {}".format(user.name, ctx.message.author.name, rsn, msg) 
         await bot.say("{} has been reported".format(user.name))
+        await bot.send_message(channel1, "**{}** has been reported by {} for {}. Moar information: {}".format(user.name, ctx.message.author.name, rsn, message) 
         
 @bot.event
 async def on_member_join(member):
