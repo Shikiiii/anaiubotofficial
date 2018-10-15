@@ -7,7 +7,10 @@ import aiohttp
 import random
 import os
 import json
+import time
 from discord.voice_client import VoiceClient
+
+cooldowns = {}
 
 bot = commands.Bot(command_prefix='!')
 bot.remove_command('help')
@@ -412,17 +415,24 @@ async def on_member_join(member):
         
 @bot.event
 async def on_message(message):
-    with open('users.json', 'r') as f:
-        users = json.loads(f.read())
+    if not message.author.bot:
+        if message.author.id in cooldowns:
+            if (time.time() - cooldowns[message.author.id]) < 60:
+                await bot.process_commands(message)
+                return
 
-    await update_data(users, message.author)
-    await add_experience(users, message.author, 5)
-    await level_up(users, message.author, message.channel)
+        cooldowns[message.author.id] = time.time()
 
-    with open('users.json', 'w') as f:
-        json.dump(users, f)
-        
-    bot.process_commands(message)
+        with open('users.json', 'r') as f:
+            users = json.loads(f.read())
+
+        await try_create_user(users, message.author)
+        await add_experience(users, message.author, message.channel, 5)
+
+        with open('users.json', 'w') as f:
+            json.dump(users, f)
+
+    await bot.process_commands(message)
 
 async def update_data(users, user):
     if not user.id in users:
