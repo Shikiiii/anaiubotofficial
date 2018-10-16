@@ -407,18 +407,15 @@ async def roles(ctx):
 async def roles_error(error, ctx):
     if isinstance(error, commands.CommandOnCooldown):
         await bot.say(":x: | Hey, **{}**! Sorry but this command has a cooldown of 300 seconds, please try again in **{}** seconds.".format(ctx.message.author.name, round(error.retry_after, 1)))
-
-@bot.command(pass_context=True)
-async def report(ctx, user, reason, *message):
-    if len(ctx.message.mentions) > 0:
-        user = ctx.message.mentions[0]
-        reportingc = discord.utils.get(ctx.message.author.server.channels, name="report-logs")
-        reporting = discord.Embed(tile="Reported: {}".format(user.mention), description="By: {}".format(ctx.message.author.mention), color=0xff0000)
-        reporting.set_author(name="A new report has appeared:", icon_url=bot.avatar_url)
-        reporting.add_field(text="Rule broken: {}".format(" ".join(reason), description="Additional information (optimal): {}".format(" ".join(message)))
-        await bot.send_message(reportingc, "", embed=reporting)
-        await bot.send_message(ctx.message.channel, "{} has been reported".format(user.name))
  
+@bot.command(pass_context=True)
+async def level(ctx):
+    with open('users.json', 'r') as f:
+        users = json.loads(f.read())
+
+    lvl = users[ctx.message.author.id]["level"]
+    await bot.send_message(ctx.message.channel, "**XP** | **{}**, you are at ``{}`` level.".format(ctx.message.author.name, lvl))
+
 @bot.event
 async def on_ready():
     await bot.change_presence(game=discord.Game(name='!help | Made by Thegamesbg#2392 with love.'))
