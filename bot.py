@@ -427,7 +427,7 @@ async def report(ctx, user, reason, *message):
         await bot.send_message(reporting_channel, "", embed=reporting)
         reply = discord.Embed(title="Thank you! Your report has been send to our staff team for a review.", description="Please note that reports that are NOT TRUE will transfer the punishment to YOU!", color=0x3adf00)
         await bot.send_message(ctx.message.channel, "", embed=reply)
-    else
+    else:
         await bot.send_message(ctx.message.channel, ":x: | Nu, baka! Correct usage: ``!report @someone rule_broken optimal_information``. Example: ``!report @Thegamesbg#2392 3 He is spamming and doesn't want to stop!``")
     
 @bot.event
