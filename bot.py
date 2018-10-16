@@ -425,7 +425,7 @@ async def report(ctx, user, reason, *message):
         reporting.set_author(name="A new report has appeared:", icon_url=bot.user.avatar_url)
         reporting.add_field(name="Rule broken: {}".format(reason), value="Additional information (optimal): {}".format(" ".join(message)))
         await bot.send_message(reporting_channel, "", embed=reporting)
-        reply = discord.Embed(title="Thank you! Your report has been send to our staff team for a review.", description="Please note that reports that are NOT TRUE will transfer the punishment to YOU!", color=3adf00)
+        reply = discord.Embed(title="Thank you! Your report has been send to our staff team for a review.", description="Please note that reports that are NOT TRUE will transfer the punishment to YOU!", color=0x3adf00)
         await bot.send_message(ctx.message.channel, "", embed=reply)
     else
         await bot.send_message(ctx.message.channel, ":x: | Nu, baka! Correct usage: ``!report @someone rule_broken optimal_information``. Example: ``!report @Thegamesbg#2392 3 He is spamming and doesn't want to stop!``")
