@@ -420,7 +420,7 @@ async def level(ctx):
 async def report(ctx, user, reason, *message):
     if len(ctx.message.mentions) > 0:
         user = ctx.message.mentions[0]
-        reporting_channel = discord.utils.get(ctx.message.author.server.channels, name="report-logs)
+        reporting_channel = discord.utils.get(ctx.message.author.server.channels, name="report-logs")
         reporting = discord.Embed(title="Reported: {}".format(user.mention), description="By: {}".format(ctx.message.author.mention), color=0xff0000)
         reporting.set_author(name="A new report has appeared:", icon_url=bot.user.avatar_url)
         reporting.add_field(name="Rule broken: {}".format(reason), value="Additional information (optimal): {}".format(" ".join(message)))
