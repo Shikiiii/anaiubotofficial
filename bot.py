@@ -413,7 +413,7 @@ async def report(ctx, user, reason, *message):
     if len(ctx.message.mentions) > 0:
         user = ctx.message.mentions[0]
         channel1 = discord.utils.get(ctx.message.author.server.channels, name="logs")
-        await bot.send_message(channel1, "{} has been reported by {} for {}. Moar information: {}".format(user.name, ctx.message.author.name, reason, " ".join(message)))
+        await bot.send_message(channel1, "{} has been reported by {} for {}. Moar information: {}".format(user.name, ctx.message.author.name, " ".join(reason), " ".join(message)))
         await bot.say("{} has been reported".format(user.name))
  
 @bot.event
