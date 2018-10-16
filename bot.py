@@ -426,7 +426,7 @@ async def report(ctx, user, reason, *message):
         reporting.add_field(name="Member:", value="{}".format(user.mention))
         reporting.add_field(name="Reported by:", value="{}".format(ctx.message.author.mention))
         reporting.add_field(name="Rule number broken:", value="{}".format(" ".join(reason))
-        reporting.add_field(name="Channel broken in:", value={}".format(ctx.message.channel.mention))
+        reporting.add_field(name="Channel broken in:", value="{}".format(ctx.message.channel.mention))
         reporting.add_field(name="More information (optimal):", value="{}".format(" ".join(message))
         await bot.send_message(reporting_channel, "", embed=reporting)
         reply = discord.Embed(title="Thank you! Your report has been sended to our staff team for a review.", description="Please note that reports that are NOT TRUE will transfer the punishment to YOU!", color=0x3adf00)
