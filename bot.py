@@ -421,11 +421,15 @@ async def report(ctx, user, reason, *message):
     if len(ctx.message.mentions) > 0:
         user = ctx.message.mentions[0]
         reporting_channel = discord.utils.get(ctx.message.author.server.channels, name="report-logs")
-        reporting = discord.Embed(title="Reported: {}".format(user.mention), description="By: {}".format(ctx.message.author.mention), color=0xff0000)
+        reporting = discord.Embed(color=0xff0000)
         reporting.set_author(name="A new report has appeared:", icon_url=bot.user.avatar_url)
-        reporting.add_field(name="Rule broken: {}".format(reason), value="Additional information (optimal): {}".format(" ".join(message)))
+        reporting.add_field(name="Member:", value="{}".format(user.mention))
+        reporting.add_field(name="Reported by:", value="{}".format(ctx.message.author.mention))
+        reporting.add_field(name="Rule number broken:", value="{}".format(" ".join(reason))
+        reporting.add_field(name="Channel broken in:", value={}".format(ctx.message.channel.mention))
+        reporting.add_field(name="More information (optimal):", value="{}".format(" ".join(message))
         await bot.send_message(reporting_channel, "", embed=reporting)
-        reply = discord.Embed(title="Thank you! Your report has been send to our staff team for a review.", description="Please note that reports that are NOT TRUE will transfer the punishment to YOU!", color=0x3adf00)
+        reply = discord.Embed(title="Thank you! Your report has been sended to our staff team for a review.", description="Please note that reports that are NOT TRUE will transfer the punishment to YOU!", color=0x3adf00)
         await bot.send_message(ctx.message.channel, "", embed=reply)
     else:
         await bot.send_message(ctx.message.channel, ":x: | Nu, baka! Correct usage: ``!report @someone rule_broken optimal_information``. Example: ``!report @Thegamesbg#2392 3 He is spamming and doesn't want to stop!``")
