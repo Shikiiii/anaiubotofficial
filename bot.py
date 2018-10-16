@@ -412,9 +412,9 @@ async def roles_error(error, ctx):
 async def report(ctx, user, reason, *message):
     if len(ctx.message.mentions) > 0:
         user = ctx.message.mentions[0]
-        channel1 = discord.utils.get(ctx.message.author.server.channels, name="logs")
-        await bot.send_message(channel1, "{} has been reported by {} for {}. Moar information: {}".format(user.name, ctx.message.author.name, " ".join(reason), " ".join(message)))
-        await bot.say("{} has been reported".format(user.name))
+        channel = discord.utils.get(ctx.message.author.server.channels, name="logs")
+        await bot.send_message(channel, "{} has been reported by {} for {}. Moar information: {}".format(user.name, ctx.message.author.name, " ".join(reason), " ".join(message)))
+        await bot.send_message(ctx.message.channel, "{} has been reported".format(user.name))
  
 @bot.event
 async def on_ready():
