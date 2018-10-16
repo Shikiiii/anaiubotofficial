@@ -55,13 +55,6 @@ async def level_up(users, user, channel):
             await bot.send_message(channel,
                                    ":star: | **{}** reached a milestone! Reward: **5Level Role**".format(user.name))
             await bot.add_roles(user, reward5)
-
- async def add_credits(ctx, users, crd):
-    users[user.id]["credits"] += crd
-    
-async def remove_credits(ctx, users, crd):
-    if users[user.id]["credits"] > crd:
-        users[user.id]["credits"]  -= crd
             
 @bot.command(pass_context=True)
 async def hello(ctx):
