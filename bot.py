@@ -414,7 +414,7 @@ async def level(ctx):
         users = json.loads(f.read())
 
     lvl = users[ctx.message.author.id]["level"]
-    await bot.send_message(ctx.message.channel, "**XP** | **{}**, you are at ``{}`` level.".format(ctx.message.author.name, lvl))
+    await bot.send_message(ctx.message.channel, "**XP** | **{}**, you are at ``{}`` level. :ANHyped:".format(ctx.message.author.name, lvl))
 
 @bot.event
 async def on_ready():
