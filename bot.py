@@ -32,6 +32,7 @@ async def try_create_user(users, user):
         users[user.id] = {}
         users[user.id]['experience'] = 0
         users[user.id]['level'] = 1
+        users[user.id]['credits'] = 0
 
 async def add_experience(users, user, channel, exp):
     users[user.id]["experience"] += exp
@@ -55,6 +56,13 @@ async def level_up(users, user, channel):
                                    ":star: | **{}** reached a milestone! Reward: **5Level Role**".format(user.name))
             await bot.add_roles(user, reward5)
 
+ async def add_credits(ctx, users, crd):
+    users[user.id]["credits"] += crd
+    
+async def remove_credits(ctx, users, crd):
+    if users[user.id]["credits"] > crd:
+        users[user.id]["credits"]  -= crd
+            
 @bot.command(pass_context=True)
 async def hello(ctx):
     await bot.say("Hello! :smile:")
