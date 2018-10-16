@@ -415,8 +415,8 @@ async def report(ctx, user, reason, *message):
         channel = discord.utils.get(ctx.message.author.server.channels, name="logs")
         embed1 = discord.Embed(tile="Reported: {}".format(user.mention), description="By: {}".format(ctx.message.author.mention), color=0xff0000)
         embed1.set_author(name="A new report has appeared:", icon_url=bot.avatar_url)
-        embed.add_field(text="Rule broken: {}".format(" ".join(reason), description="additional information (optimal): {}".format(" ".join(message)
-        await bot.send_message(discord.utils.get(user.server.channels, name="report-logs"), "", embed=embed1)
+        embed1.add_field(text="Rule broken: {}".format(" ".join(reason), description="additional information (optimal): {}".format(" ".join(message)
+        await bot.send_message(discord.utils.get(user.server.channels, name="report-logs"), embed=embed1)
         await bot.send_message(ctx.message.channel, "{} has been reported".format(user.name))
  
 @bot.event
