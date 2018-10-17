@@ -216,15 +216,15 @@ async def unban_error(error, ctx):
 
 @bot.command(pass_context=True)
 @commands.has_any_role("Admin", "Moderator")
-async def unmute(ctx, usr):
+async def unmute(ctx, user):
     if len(ctx.message.mentions) > 0:
         user = ctx.message.mentions[0]
         role = discord.utils.get(user.server.roles, name="AnimeNews-Muted")
         embed = discord.Embed(title="A member has been UNMUTED!", description="{0} has been unmuted by {1}!".format(user.name, ctx.message.author.name), color=0x3adf00)
         embed.set_footer(text="you can chat, again | report staff abuse by DMing Thegamesbg")
         embed.set_thumbnail(url=user.avatar_url)
-        await bot.say(embed=embed)
-        await bot.remove_roles(usr, role)
+        await bot.send_message(ctx.message.channel, "", embed=embed)
+        await bot.remove_roles(user, role)
         print("{} used command (ID: !unmute), the command was successfully executed.".format(ctx.message.author.name))
     else:
         await bot.say(":x: | You need to mention a user!".format(ctx.message.author.name))
@@ -235,6 +235,28 @@ async def unmute_error(error, ctx):
     if isinstance(error, commands.CheckFailure):
         await ctx.bot.say("Hey, {}! Don't try to use me when I don't want to, baka. **(You don't have permission to use this command!**)".format(ctx.message.author.name))
         print("{} used command (ID: !unmute), but declined for `no permissions`.".format(ctx.message.author.name))
+
+@bot.command(pass_context=True)
+@commands.has_any_role("Admin", "Moderator")
+async def unwarn(ctx, user):
+    if len(ctx.message.mentions) > 0:
+        user = ctx.message.mentions[0]
+        role = discord.utils.get(user.server.roles, name="AnimeNews-Warned")
+        embed = discord.Embed(title="A member has been UNWARNED!", description="{0} has been unwarned by {1}!".format(user.name, ctx.message.author.name), color=0x3adf00)
+        embed.set_footer(text="gratz :tada: | report staff abuse by DMing Thegamesbg")
+        embed.set_thumbnail(url=user.avatar_url)
+        await bot.send_message(ctx.message.channel, "", embed=embed)
+        await bot.remove_roles(user, role)
+        print("{} used command (ID: !unmute), the command was successfully executed.".format(ctx.message.author.name))
+    else:
+        await bot.say(":x: | You need to mention a user!".format(ctx.message.author.name))
+        print("{} used command (ID: !unwarn), but declined for `not mentioning a user`.".format(ctx.message.author.name))
+
+@unwarn.error
+async def unwarn_error(error, ctx):
+    if isinstance(error, commands.CheckFailure):
+        await ctx.bot.say("Hey, {}! Don't try to use me when I don't want to, baka. **(You don't have permission to use this command!**)".format(ctx.message.author.name))
+        print("{} used command (ID: !unwarn), but declined for `no permissions`.".format(ctx.message.author.name))
 
 @bot.command(pass_context=True)
 async def magicball(ctx, *reason):
