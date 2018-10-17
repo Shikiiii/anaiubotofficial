@@ -239,7 +239,7 @@ async def unmute_error(error, ctx):
 @bot.command(pass_context=True)
 async def magicball(ctx, *reason):
     rsn = " ".join(reason)
-    msgs = ["Yes.", "No.", "That's not true.", "They lied to you.", "You got it right.", "That's true.", "Yes, you are.", "No, you aren't."]
+    msgs = [":crystal_ball: Yes.", ":crystal_ball: No.", ":crystal_ball: That's not true.", ":crystal_ball: They lied to you.", ":crystal_ball: You got it right.", ":crystal_ball: That's true.", ":crystal_ball: Yes, you are.", ":crystal_ball: No, you aren't."]
     rdm = random.choice(msgs) 
     embed = discord.Embed(title=rdm, description="Command executed by {} | Question: {}".format(ctx.message.author.name, rsn), color=0x5882FA)
     embed.set_thumbnail(url=ctx.message.author.avatar_url)
