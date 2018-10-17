@@ -464,7 +464,85 @@ async def report(ctx, user, reason, *message):
 
     else:
         await bot.send_message(ctx.message.channel, ":x: | Nu, baka! Correct usage: ``!report @someone rule_broken optimal_information``. Example: ``!report @Thegamesbg#2392 3 He is spamming and doesn't want to stop!``")
-    
+
+@bot.command(pass_context=True)
+async def rps(ctx, message):
+    rock = "rock"
+    paper = "paper"
+    scissors = "scissors"
+    memberchoice = " ".join(message)
+    if rock == memberchoice:
+        rockchoice = ["paper", "scissors", "rock"]
+        randomrock = random.choose(rockchoice)
+        if randomrock == rock:
+            embedROCKDRAW = discord.Embed(color=0xf3f781)
+            embedROCKDRAW.set_author(name="I choose ROCK! - We are draw.", icon_url=ctx.message.author.avatar_url)
+            embedROCKDRAW.set_footer(text="GG, {}!".format(ctx.message.author.name)
+            await bot.send_message(ctx.message.channel, "", embed=embedROCKDRAW)
+            return
+
+        if randomrock == paper:
+            embedROCKWIN = discord.Embed(color=0xff0000)
+            embedROCKWIN.set_author(name="I choose PAPER! - I win.", icon_url=ctx.message.author.avatar_url)
+            embedROCKWIN.set_footer(text="GG, {}!".format(ctx.message.author.name)
+            await bot.send_message(ctx.message.channel, "", embed=embedROCKWIN)
+            return
+
+        if randomrock == scissors:
+            embedROCKLOSE = discord.Embed(color=0x40ff00)
+            embedROCKLOSE.set_author(name="I choose SCISSORS! - I lose.", icon_url=ctx.message.author.avatar_url)
+            embedROCKLOSE.set_footer(text="GG, {}!".format(ctx.message.author.name)
+            await bot.send_message(ctx.message.channel, "", embed=embedROCKLOSE)
+            return
+
+    if paper == memberchoice:
+        paperchoice = ["rock", "scissors", "paper"]
+        randompaper = random.choose(paperchoice)
+        if randompaper == rock:
+            embedPAPERLOSE = discord.Embed(color=0xff0000)
+            embedPAPERLOSE.set_author(name="I choose ROCK! - I lose.", icon_url=ctx.message.author.avatar_url)
+            embedPAPERLOSE.set_footer(text="GG, {}!".format(ctx.message.author.name)
+            await bot.send_message(ctx.message.channel, "", embed=embedPAPERLOSE)
+            return
+
+        if randompaper == paper:
+            embedPAPERDRAW = discord.Embed(color=0xf3f781)
+            embedPAPERDRAW.set_author(name="I choose PAPER! - We are draw.", icon_url=ctx.message.author.avatar_url)
+            embedPAPERDRAW.set_footer(text="GG, {}!".format(ctx.message.author.name)
+            await bot.send_message(ctx.message.channel, "", embed=embedPAPERDRAW)
+            return
+
+        if randompaper == scissors:
+            embedPAPERWIN = discord.Embed(color=0x40ff00)
+            embedPAPERWIN.set_author(name="I choose SCISSORS! - I win.", icon_url=ctx.message.author.avatar_url)
+            embedPAPERWIN.set_footer(text="GG, {}!".format(ctx.message.author.name)
+            await bot.send_mesage(ctx.message.channel, "", embed=embedPAPERWIN)
+            return
+
+    if scissors == memberchoice:
+        scissorschoice = ["paper", "rock", "scissors"]
+        randomscissors = random.choose(scissorschoice)
+        if randomscissors == rock:
+            embedSCISSORSWIN = discord.Embed(color=0x40ff00)
+            embedSCISSORSWIN.set_author(name="I choose ROCK! - I win.", icon_url=ctx.message.author.avatar_url)
+            embedSCISSORSWIN.set_footer(text="GG, {}!".format(ctx.message.author.name)
+            await bot.send_message(ctx.message.channel, "", embed=embedSCISSORSWIN)
+            return
+
+        if randomscissors == paper:
+            embedSCISSORSLOSE = discord.Embed(color=0xff0000)
+            embedSCISSORSLOSE.set_author(name="I choose PAPER! - I lose.", icon_url=ctx.message.author.avatar_url)
+            embedSCISSORSLOSE.set_footer(text="GG, {}!".format(ctx.message.author.name)
+            await bot.send_message(ctx.message.channel, "", embed=embedSCISSORSLOSE)
+            return
+
+        if randomscissors == scissors:
+            embedSCISSORSDRAW = discord.Embed(color=0xf3f781)
+            embedSCISSORSDRAW.set_author(name="I choose SCISSORS! - We are draw.", icon_url=ctx.message.author.avatar_url)
+            embedSCISSORSDRAW.set_footer(text="GG, {}!".format(ctx.message.author.name)
+            await bot.send_mesage(ctx.message.channel, "", embed=embedSCISSORSDRAW)
+            return
+        
 @bot.event
 async def on_ready():
     await bot.change_presence(game=discord.Game(name='!help | Made by Thegamesbg#2392 with love.'))
