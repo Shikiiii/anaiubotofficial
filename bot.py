@@ -541,7 +541,7 @@ async def rps(ctx, memberchoice):
             await bot.say(embed=embedSCISSORSDRAW)
             return
 
-@bot.command
+@bot.command(pass_context=True)
 async def hyped(ctx, amount=1):
     channel = ctx.message.channel
     messages = []
