@@ -466,7 +466,7 @@ async def report(ctx, user, reason, *message):
         await bot.send_message(ctx.message.channel, ":x: | Nu, baka! Correct usage: ``!report @someone rule_broken optimal_information``. Example: ``!report @Thegamesbg#2392 3 He is spamming and doesn't want to stop!``")
 
 @bot.command(pass_context=True)
-async def rps(ctx, message):
+async def rps(ctx, memberchoice):
     rock = "rock"
     paper = "paper"
     scissors = "scissors"
