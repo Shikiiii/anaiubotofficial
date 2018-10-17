@@ -439,7 +439,7 @@ async def level(ctx):
     await bot.send_message(ctx.message.channel, "**XP** | **{}**, you are at ``{}`` level. <a:ANHyped:501653444491214858>".format(ctx.message.author.name, lvl))
 
 @bot.command(pass_context=True)
-@command.cooldown(1, 300, commands.BucketType.user)
+@commands.cooldown(1, 300, commands.BucketType.user)
 async def report(ctx, user, reason, *message):
     if len(ctx.message.mentions) > 0:
         user = ctx.message.mentions[0]
