@@ -540,6 +540,15 @@ async def rps(ctx, memberchoice):
             embedSCISSORSDRAW.set_footer(text="GG, {}!".format(ctx.message.author.name))
             await bot.say(embed=embedSCISSORSDRAW)
             return
+
+@bot.command
+async def hyped(ctx, amount=1):
+    channel = ctx.message.channel
+    messages = []
+    async for message in bot.logs_from(channel, limit=int(amount)):
+        messages.append(message)
+    await bot.delete_messages(messages)
+    await bot.say("<a:ANHyped:501653444491214858>")
         
 @bot.event
 async def on_ready():
