@@ -415,7 +415,7 @@ async def level(ctx):
         users = json.loads(f.read())
 
     lvl = users[ctx.message.author.id]["level"]
-    await bot.send_message(ctx.message.channel, "**XP** | **{}**, you are at ``{}`` level. <:ANHyped:501653444491214858>".format(ctx.message.author.name, lvl))
+    await bot.send_message(ctx.message.channel, "**XP** | **{}**, you are at ``{}`` level. <a:ANHyped:501653444491214858>".format(ctx.message.author.name, lvl))
 
 @bot.command(pass_context=True)
 async def report(ctx, user, reason, *message):
