@@ -541,16 +541,19 @@ async def rps(ctx, memberchoice):
             await bot.say(embed=embedSCISSORSDRAW)
             return
 
-@bot.command(pass_context=True)
-async def hyped(ctx, amount=2):
-    await bot.say("-")
-    channel = ctx.message.channel
-    messages = []
-    async for message in bot.logs_from(channel, limit=int(amount)):
-        messages.append(message)
-    await bot.delete_messages(messages)
-    await bot.say("<a:ANHyped:501653444491214858>")
+@bot.command
+async def on_message(message):
+    if message.content.startswith('hyped'):
+        await bot.say("-")
+        channel = ctx.message.channel
+        messages = []
+        async for message in bot.logs_from(channel, limit=int(amount)):
+            messages.append(message)
+        await bot.delete_messages(messages)
+        await bot.say("<a:ANHyped:501653444491214858>")
         
+        await bot.process_commands(message)
+
 @bot.event
 async def on_ready():
     await bot.change_presence(game=discord.Game(name='!help | Made by Thegamesbg#2392 with love.'))
