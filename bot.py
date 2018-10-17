@@ -417,6 +417,8 @@ async def level(ctx):
     lvl = users[ctx.message.author.id]["level"]
     await bot.send_message(ctx.message.channel, "**XP** | **{}**, you are at ``{}`` level. <:ANHyped:501653444491214858>".format(ctx.message.author.name, lvl))
 
+@bot.command(pass_context=True)
+async def report(ctx, user, reason, *message):
     if len(ctx.message.mentions) > 0:
         user = ctx.message.mentions[0]
         await bot.send_message(ctx.message.channel, "Type confirm to report this member. Please note that reports that are NOT TRUE will transfer the punishment to YOU, so please don't abuse this command.")
