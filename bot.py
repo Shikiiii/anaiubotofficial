@@ -200,12 +200,12 @@ async def pfp(ctx):
 async def unban(ctx, *username):
     server = ctx.message.author.server
     banned = await bot.get_bans(server)
-    usr = discord.utils.get(banned, name=" ".join(username))
-    embed = discord.Embed(title="A member has been UBNANNED!", description="{0} has been unbanned by {1}!".format(usr.name, ctx.message.author.name), color=0x3adf00)
+    user = discord.utils.get(banned, name=" ".join(username))
+    embed = discord.Embed(title="A member has been UBNANNED!", description="{0} has been unbanned by {1}!".format(user.name, ctx.message.author.name), color=0x3adf00)
     embed.set_footer(text="hmph, guess you weren't gone forever like it said | report staff abuse by DMing Thegamesbg")
-    embed.set_thumbnail(url=usr.avatar_url)
+    embed.set_thumbnail(url=user.avatar_url)
     await bot.say(embed=embed)
-    await bot.unban(server, usr)
+    await bot.unban(server, user)
     print("{} used command (ID: !unban), the command was successfully executed.".format(ctx.message.author.name))
 
 @unban.error
