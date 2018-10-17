@@ -417,15 +417,15 @@ async def level(ctx):
     lvl = users[ctx.message.author.id]["level"]
     await bot.send_message(ctx.message.channel, "**XP** | **{}**, you are at ``{}`` level. <:ANHyped:501653444491214858>".format(ctx.message.author.name, lvl))
 
-@bot.command(pass_context=True)
-async def report(ctx, user, reason, *message):
     if len(ctx.message.mentions) > 0:
         user = ctx.message.mentions[0]
-        await bot.send_message(ctx.message.channel, "Type ``confirm`` to report this member. Please note that reports that are NOT TRUE will transfer the punishment to YOU, so please don't abuse this command.")
-        msg = await client.wait_for_message(timeout=30, author=ctx.message.author, content='hello')
-        if msg is None:
-            bot.say("**{}**, you ran out of time! (You didn't confirmed the !report)".format(ctx.message.author))
+        await bot.send_message(ctx.message.channel, "Type confirm to report this member. Please note that reports that are NOT TRUE will transfer the punishment to YOU, so please don't abuse this command.")
+        msg = await bot.wait_for_message(timeout=30, author=ctx.message.author, content='hello')
         
+        if msg is None:
+            bot.say("{}, you ran out of time! (You didn't confirmed the !report)".format(ctx.message.author))
+            return
+
         reporting_channel = discord.utils.get(ctx.message.author.server.channels, name="report-logs")
         reporting = discord.Embed(color=0xff0000)
         reporting.set_author(name="A new report has appeared:", icon_url=bot.user.avatar_url)
@@ -437,8 +437,9 @@ async def report(ctx, user, reason, *message):
         await bot.send_message(reporting_channel, "", embed=reporting)
         reply = discord.Embed(title="Thank you! Your report has been sended to our staff team for a review.", description="Please note that reports that are NOT TRUE will transfer the punishment to YOU!", color=0x3adf00)
         await bot.send_message(ctx.message.channel, "", embed=reply)
+
     else:
-        await bot.send_message(ctx.message.channel, ":x: | Nu, baka! Correct usage: ``!report @someone rule_broken optimal_information``. Example: ``!report @Thegamesbg#2392 3 He is spamming and doesn't want to stop!``")
+        await bot.send_message(ctx.message.channel, ":x: | Nu, baka! Correct usage: !report @someone rule_broken optimal_information. Example: !report @Thegamesbg#2392 3 He is spamming and doesn't want to stop!")
     
 @bot.event
 async def on_ready():
