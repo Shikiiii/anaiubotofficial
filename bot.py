@@ -480,14 +480,14 @@ async def rps(ctx, memberchoice):
             await bot.say(embed=embedROCKDRAW)
 
         if randomrock == paper:
-            embedROCKWIN = discord.Embed(color=0xff0000)
+            embedROCKWIN = discord.Embed(color=0x40f00)
             embedROCKWIN.set_author(name="I choose PAPER! - I win.", icon_url=ctx.message.author.avatar_url)
             embedROCKWIN.set_footer(text="GG, {}!".format(ctx.message.author.name))
             await bot.say(embed=embedROCKWIN)
             return
 
         if randomrock == scissors:
-            embedROCKLOSE = discord.Embed(color=0x40ff00)
+            embedROCKLOSE = discord.Embed(color=0xff0000)
             embedROCKLOSE.set_author(name="I choose SCISSORS! - I lose.", icon_url=ctx.message.author.avatar_url)
             embedROCKLOSE.set_footer(text="GG, {}!".format(ctx.message.author.name))
             await bot.say(embed=embedROCKLOSE)
@@ -497,7 +497,7 @@ async def rps(ctx, memberchoice):
         paperchoice = ["rock", "scissors", "paper"]
         randompaper = random.choice(paperchoice)
         if randompaper == rock:
-            embedPAPERLOSE = discord.Embed(color=0xff0000)
+            embedPAPERLOSE = discord.Embed(color=0x40ff00)
             embedPAPERLOSE.set_author(name="I choose ROCK! - I lose.", icon_url=ctx.message.author.avatar_url)
             embedPAPERLOSE.set_footer(text="GG, {}!".format(ctx.message.author.name))
             await bot.say(embed=embedPAPERLOSE)
@@ -511,7 +511,7 @@ async def rps(ctx, memberchoice):
             return
 
         if randompaper == scissors:
-            embedPAPERWIN = discord.Embed(color=0x40ff00)
+            embedPAPERWIN = discord.Embed(color=0xff0000)
             embedPAPERWIN.set_author(name="I choose SCISSORS! - I win.", icon_url=ctx.message.author.avatar_url)
             embedPAPERWIN.set_footer(text="GG, {}!".format(ctx.message.author.name))
             await bot.say(embed=embedPAPERWIN)
@@ -521,14 +521,14 @@ async def rps(ctx, memberchoice):
         scissorschoice = ["paper", "rock", "scissors"]
         randomscissors = random.choice(scissorschoice)
         if randomscissors == rock:
-            embedSCISSORSWIN = discord.Embed(color=0x40ff00)
+            embedSCISSORSWIN = discord.Embed(color=0xff0000)
             embedSCISSORSWIN.set_author(name="I choose ROCK! - I win.", icon_url=ctx.message.author.avatar_url)
             embedSCISSORSWIN.set_footer(text="GG, {}!".format(ctx.message.author.name))
             await bot.say(embed=embedSCISSORSWIN)
             return
 
         if randomscissors == paper:
-            embedSCISSORSLOSE = discord.Embed(color=0xff0000)
+            embedSCISSORSLOSE = discord.Embed(color=0x40ff00)
             embedSCISSORSLOSE.set_author(name="I choose PAPER! - I lose.", icon_url=ctx.message.author.avatar_url)
             embedSCISSORSLOSE.set_footer(text="GG, {}!".format(ctx.message.author.name))
             await bot.say(embed=embedSCISSORSLOSE)
