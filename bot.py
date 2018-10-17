@@ -480,14 +480,14 @@ async def rps(ctx, memberchoice):
             await bot.say(embed=embedROCKDRAW)
 
         if randomrock == paper:
-            embedROCKWIN = discord.Embed(color=0x40ff00)
+            embedROCKWIN = discord.Embed(color=0xff0000)
             embedROCKWIN.set_author(name="I choose PAPER! - I win.", icon_url=ctx.message.author.avatar_url)
             embedROCKWIN.set_footer(text="GG, {}!".format(ctx.message.author.name))
             await bot.say(embed=embedROCKWIN)
             return
 
         if randomrock == scissors:
-            embedROCKLOSE = discord.Embed(color=0xff0000)
+            embedROCKLOSE = discord.Embed(color=0x40ff00)
             embedROCKLOSE.set_author(name="I choose SCISSORS! - I lose.", icon_url=ctx.message.author.avatar_url)
             embedROCKLOSE.set_footer(text="GG, {}!".format(ctx.message.author.name))
             await bot.say(embed=embedROCKLOSE)
