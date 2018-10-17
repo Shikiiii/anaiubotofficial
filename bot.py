@@ -47,7 +47,6 @@ async def level_up(users, user, channel):
         embed = discord.Embed(title="Congratulations! You leveled up. You are now {} level.".format(lvl_end))
         embed.set_author(name="{}".format(user.name), icon_url=user.avatar_url)
         await bot.send_message(channel, "", embed=embed)
-        await bot.send_message(channel, "{} leveled up to level {}!".format(user.mention, lvl_end))
         users[user.id]['level'] = lvl_end
 
         if lvl_end == 5:
@@ -440,6 +439,7 @@ async def level(ctx):
     await bot.send_message(ctx.message.channel, "**XP** | **{}**, you are at ``{}`` level. <a:ANHyped:501653444491214858>".format(ctx.message.author.name, lvl))
 
 @bot.command(pass_context=True)
+@command.cooldown(1, 300, commands.BucketType.user)
 async def report(ctx, user, reason, *message):
     if len(ctx.message.mentions) > 0:
         user = ctx.message.mentions[0]
@@ -447,7 +447,7 @@ async def report(ctx, user, reason, *message):
         msg = await bot.wait_for_message(timeout=30, author=ctx.message.author, content='hello')
         
         if msg is None:
-            await bot.send_message(ctx.message.channel, "{}, you ran out of time! (You didn't confirmed the !report)".format(ctx.message.author))
+            await bot.send_message(ctx.message.channel, "{}, you ran out of time! (You didn't confirmed the !report)".format(ctx.message.author.name))
             return
 
         reporting_channel = discord.utils.get(ctx.message.author.server.channels, name="report-logs")
@@ -464,6 +464,11 @@ async def report(ctx, user, reason, *message):
 
     else:
         await bot.send_message(ctx.message.channel, ":x: | Nu, baka! Correct usage: ``!report @someone rule_broken optimal_information``. Example: ``!report @Thegamesbg#2392 3 He is spamming and doesn't want to stop!``")
+
+@report.error
+async def report_error(ctx, error):
+    if isinstance(error, commands.CommandOnCooldown):
+        await bot.say(":x: | Hey, **{}**! Sorry but this command has a cooldown of 300 seconds, please try again in **{}** seconds.".format(ctx.message.author.mention, round(error.retry_after, 1)))
 
 @bot.command(pass_context=True)
 async def rps(ctx, memberchoice):
@@ -540,19 +545,6 @@ async def rps(ctx, memberchoice):
             embedSCISSORSDRAW.set_footer(text="GG, {}!".format(ctx.message.author.name))
             await bot.say(embed=embedSCISSORSDRAW)
             return
-
-@bot.command
-async def on_message(message):
-    if message.content.startswith('hyped'):
-        await bot.say("-")
-        channel = ctx.message.channel
-        messages = []
-        async for message in bot.logs_from(channel, limit=int(amount)):
-            messages.append(message)
-        await bot.delete_messages(messages)
-        await bot.say("<a:ANHyped:501653444491214858>")
-        
-        await bot.process_commands(message)
 
 @bot.event
 async def on_ready():
