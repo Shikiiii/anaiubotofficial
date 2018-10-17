@@ -467,19 +467,17 @@ async def report(ctx, user, reason, *message):
 
 @bot.command(pass_context=True)
 async def rps(ctx, message):
-    channel = ctx.message.channel
     rock = "rock"
     paper = "paper"
     scissors = "scissors"
-    memberchoice = " ".join(message)
     if rock == memberchoice:
         rockchoice = ["paper", "scissors", "rock"]
-        randomrock = random.choose(rockchoice)
+        randomrock = random.choice(rockchoice)
         if randomrock == rock:
             embedROCKDRAW = discord.Embed(color=0xf3f781)
             embedROCKDRAW.set_author(name="I choose ROCK! - We are draw.", icon_url=ctx.message.author.avatar_url)
             embedROCKDRAW.set_footer(text="GG, {}!".format(ctx.message.author.name))
-            await bot.send_message(ctx.message.channel, "", embed=embedROCKDRAW)
+            await bot.say(embed=embedROCKDRAW)
 
         if randomrock == paper:
             embedROCKWIN = discord.Embed(color=0xff0000)
@@ -497,7 +495,7 @@ async def rps(ctx, message):
 
     if paper == memberchoice:
         paperchoice = ["rock", "scissors", "paper"]
-        randompaper = random.choose(paperchoice)
+        randompaper = random.choice(paperchoice)
         if randompaper == rock:
             embedPAPERLOSE = discord.Embed(color=0xff0000)
             embedPAPERLOSE.set_author(name="I choose ROCK! - I lose.", icon_url=ctx.message.author.avatar_url)
@@ -521,7 +519,7 @@ async def rps(ctx, message):
 
     if scissors == memberchoice:
         scissorschoice = ["paper", "rock", "scissors"]
-        randomscissors = random.choose(scissorschoice)
+        randomscissors = random.choice(scissorschoice)
         if randomscissors == rock:
             embedSCISSORSWIN = discord.Embed(color=0x40ff00)
             embedSCISSORSWIN.set_author(name="I choose ROCK! - I win.", icon_url=ctx.message.author.avatar_url)
