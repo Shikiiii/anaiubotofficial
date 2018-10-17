@@ -542,7 +542,8 @@ async def rps(ctx, memberchoice):
             return
 
 @bot.command(pass_context=True)
-async def hyped(ctx, amount=1):
+async def hyped(ctx, amount=2):
+    await bot.say("-")
     channel = ctx.message.channel
     messages = []
     async for message in bot.logs_from(channel, limit=int(amount)):
