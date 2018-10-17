@@ -478,7 +478,7 @@ async def rps(ctx, message):
             embedROCKDRAW = discord.Embed(color=0xf3f781)
             embedROCKDRAW.set_author(name="I choose ROCK! - We are draw.", icon_url=ctx.message.author.avatar_url)
             embedROCKDRAW.set_footer(text="GG, {}!".format(ctx.message.author.name)
-            await bot.send_message(ctx.message.channel, "", embed=embedROCKDRAW)
+            await bot.say(embed=embedROCKDRAW)
             return
 
         if randomrock == paper:
