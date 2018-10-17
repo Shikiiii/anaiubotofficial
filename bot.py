@@ -468,6 +468,9 @@ async def report(ctx, user, reason, *message):
 @bot.command(pass_context=True)
 async def rps(ctx, message):
     channel = ctx.message.channel
+    rock = "rock"
+    paper = "paper"
+    scissors = "scissors"
     memberchoice = " ".join(message)
     if rock == memberchoice:
         rockchoice = ["paper", "scissors", "rock"]
@@ -477,7 +480,6 @@ async def rps(ctx, message):
             embedROCKDRAW.set_author(name="I choose ROCK! - We are draw.", icon_url=ctx.message.author.avatar_url)
             embedROCKDRAW.set_footer(text="GG, {}!".format(ctx.message.author.name))
             await bot.send_message(ctx.message.channel, "", embed=embedROCKDRAW)
-            return
 
         if randomrock == paper:
             embedROCKWIN = discord.Embed(color=0xff0000)
