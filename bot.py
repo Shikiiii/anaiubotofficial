@@ -468,9 +468,6 @@ async def report(ctx, user, reason, *message):
 @bot.command(pass_context=True)
 async def rps(ctx, message):
     channel = ctx.message.channel
-    rock = "rock"
-    paper = "paper"
-    scissors = "scissors"
     memberchoice = " ".join(message)
     if rock == memberchoice:
         rockchoice = ["paper", "scissors", "rock"]
