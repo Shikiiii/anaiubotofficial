@@ -421,11 +421,11 @@ async def level(ctx):
 async def report(ctx, user, reason, *message):
     if len(ctx.message.mentions) > 0:
         user = ctx.message.mentions[0]
-        await bot.send_message(ctx.message.channel, "Type confirm to report this member. Please note that reports that are NOT TRUE will transfer the punishment to YOU, so please don't abuse this command.")
+        await bot.send_message(ctx.message.channel, "Type ``confirm`` to report this member. Please note that reports that are NOT TRUE will transfer the punishment to YOU, so please don't abuse this command.")
         msg = await bot.wait_for_message(timeout=30, author=ctx.message.author, content='hello')
         
         if msg is None:
-            bot.say("{}, you ran out of time! (You didn't confirmed the !report)".format(ctx.message.author))
+            bot.send_message(ctx.message.channel, "{}, you ran out of time! (You didn't confirmed the !report)".format(ctx.message.author))
             return
 
         reporting_channel = discord.utils.get(ctx.message.author.server.channels, name="report-logs")
@@ -441,7 +441,7 @@ async def report(ctx, user, reason, *message):
         await bot.send_message(ctx.message.channel, "", embed=reply)
 
     else:
-        await bot.send_message(ctx.message.channel, ":x: | Nu, baka! Correct usage: !report @someone rule_broken optimal_information. Example: !report @Thegamesbg#2392 3 He is spamming and doesn't want to stop!")
+        await bot.send_message(ctx.message.channel, ":x: | Nu, baka! Correct usage: ``!report @someone rule_broken optimal_information``. Example: ``!report @Thegamesbg#2392 3 He is spamming and doesn't want to stop!``")
     
 @bot.event
 async def on_ready():
