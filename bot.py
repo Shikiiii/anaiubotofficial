@@ -421,8 +421,10 @@ async def level(ctx):
 async def report(ctx, user, reason, *message):
     if len(ctx.message.mentions) > 0:
         user = ctx.message.mentions[0]
-        await bot.send_message(ctx.message.channel, "Type ``confirm`` if you are sure you want to report this member. Please note that reports that are NOT TRUE will transfer the punishment to YOU, so please don't abuse this command.")
-        msg = await bot.wait_for_message(author=ctx.message.author, content='confirm')
+        await bot.send_message(ctx.message.channel, "Type ``confirm`` to report this member. Please note that reports that are NOT TRUE will transfer the punishment to YOU, so please don't abuse this command.")
+        msg = await client.wait_for_message(timeout=30, author=ctx.message.author, content='hello')
+            if msg is None:
+                bot.say("**{}**, you ran out of time! (You didn't confirmed the !report)".format(ctx.message.author))
         reporting_channel = discord.utils.get(ctx.message.author.server.channels, name="report-logs")
         reporting = discord.Embed(color=0xff0000)
         reporting.set_author(name="A new report has appeared:", icon_url=bot.user.avatar_url)
