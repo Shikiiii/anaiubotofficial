@@ -425,7 +425,7 @@ async def report(ctx, user, reason, *message):
         msg = await bot.wait_for_message(timeout=30, author=ctx.message.author, content='hello')
         
         if msg is None:
-            bot.send_message(ctx.message.channel, "{}, you ran out of time! (You didn't confirmed the !report)".format(ctx.message.author))
+            await bot.send_message(ctx.message.channel, "{}, you ran out of time! (You didn't confirmed the !report)".format(ctx.message.author))
             return
 
         reporting_channel = discord.utils.get(ctx.message.author.server.channels, name="report-logs")
