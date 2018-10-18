@@ -205,6 +205,7 @@ async def tempmute(ctx, user, tim3, *reason):
             await bot.remove_roles(usr, role)
             embed = discord.Embed(title="A member has been UNMUTED!", description="{0} has been unmuted (shceduled)!".format(usr.mention), color=0x3adf00)
             embed.set_footer(text="you can chat, again | report staff abuse by DMing Thegamesbg")
+            await bot.say(embed=embed)
         
 @bot.command(pass_context=True)
 async def pfp(ctx):
