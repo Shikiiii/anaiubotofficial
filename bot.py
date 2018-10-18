@@ -246,6 +246,39 @@ async def tempwarn_error(error, ctx):
     if isinstance(error, commands.CheckFailure):
         await ctx.bot.say(":x: | Hey, {}! Don't try to use me when I don't want to, baka. **(You don't have permission to use this command!**)".format(ctx.message.author.mention))
         print("{} used command (ID: !ban), but declined for `no permissions`.".format(ctx.message.author.name))
+
+@bot.command(pass_context=True)
+async def tempban(ctx, user, tim3, *reason):
+    if len(ctx.message.mentions) > 0:
+        usr = ctx.message.mentions[0]
+        try:
+            float(tim3)
+        except ValueError:
+            return
+
+        embedf = discord.Embed(title="A member has been TEMPBANNED!", description="{} has been banned by {}!\nReason: {}\nTime: {} hour/s".format(usr.mention, ctx.message.author.mention, " ".join(reason), tim3), color=0xff0000)
+        embedf.set_footer(text="goodbye, for now | report staff abuse by DMing Thegamesbg")
+        embedf.set_thumbnail(url=usr.avatar_url)
+        await bot.say(embed=embedf)
+        await bot.send_message(ctx.message.author, "You are now TEMPORARILY BANNED from Anime News! You have to wait **{}** days before you can join again. You can also of course purchase unban by contacting @Thegamesbg#2392 via PayPal or SMS. By that way, you'll also get the donator rank (and all of it's percs)!".format(tim3))
+        await bot.ban(user)
+
+        await asyncio.sleep(float(tim3) * 60 * 60 * 24)
+
+        server = ctx.message.author.server
+        banned = await bot.get_bans(server)
+        userb = discord.utils.get(banned, name=" ".join(username))
+        embedt = discord.Embed(title="A member has been UBNANNED!", description="{0} has been unbanned (automatically)!".format(userb.mention, ctx.message.author.mention), color=0x3adf00)
+        embedt.set_footer(text="hmph, guess you weren't gone forever like it said | report staff abuse by DMing Thegamesbg")
+        embedt.set_thumbnail(url=userb.avatar_url)
+        await bot.say(embed=embedt)
+        await bot.unban(server, userb)
+
+@tempban.error
+async def tempban_error(error, ctx):
+    if isinstance(error, commands.CheckFailure):
+        await ctx.bot.say(":x: | Hey, {}! Don't try to use me when I don't want to, baka. **(You don't have permission to use this command!**)".format(ctx.message.author.mention))
+        print("{} used command (ID: !ban), but declined for `no permissions`.".format(ctx.message.author.name))
         
 @bot.command(pass_context=True)
 async def pfp(ctx):
