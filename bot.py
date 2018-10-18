@@ -52,7 +52,7 @@ async def level_up(users, user, channel):
         if lvl_end == 5:
             reward5 = discord.utils.get(user.server.roles, name="5Level")
             await bot.send_message(channel,
-                                   ":star: | **{}** reached a milestone! Reward: **5Level Role**".format(user.name))
+                                   ":star: | **{}** reached a milestone! Reward: **5Level Role**".format(user.mention))
             await bot.add_roles(user, reward5)
             
 @bot.command(pass_context=True)
@@ -87,7 +87,7 @@ async def help(ctx):
     embed.add_field(name=":scroll: Looking for commands list? :scroll:", value="https://bit.ly/anaiucommands")
 
     await bot.send_message(ctx.message.author, embed=embed)
-    await bot.say('**Help message sended to {}. Please check your private messages to view the information.**'.format(ctx.message.author.name))
+    await bot.say(':information_source: | **Help message sended to {}. Please check your private messages to view the information.**'.format(ctx.message.author.mention))
     print("{} used command (ID: !mute), the command was successfully executed.".format(ctx.message.author.name))
 
 @bot.command(pass_context=True)
@@ -97,20 +97,20 @@ async def mute(ctx, usr, *reason):
         user = ctx.message.mentions[0]
         rsn = " ".join(reason)
         role = discord.utils.get(user.server.roles, name="AnimeNews-Muted")
-        embed = discord.Embed(title="A member has been MUTED!", description="{0} has been muted by {1}!\nReason: {2}".format(user.name, ctx.message.author.name, rsn), color=0xff0000)
-        embed.set_footer(text="this punishment will be reseted on sunday at whenever the owner gets his lazy ass off the chair to do it | report staff abuse by DMing Thegamesbg")
+        embed = discord.Embed(title="A member has been MUTED!", description="{0} has been muted by {1}!\nReason: {2}".format(user.mention, ctx.message.author.mention, rsn), color=0xff0000)
+        embed.set_footer(text=":zipper_mouth: owo | report staff abuse by DMing Thegamesbg")
         embed.set_thumbnail(url=user.avatar_url)
         await bot.add_roles(user, role)
         await bot.say(embed=embed)
         print("{} used command (ID: !mute), the command was successfully executed.".format(ctx.message.author.name))
     else:
-        await bot.say(":x: | You need to mention a user!".format(ctx.message.author.name))
+        await bot.say(":x: | You need to mention a user!".format(ctx.message.author.mention))
         print("{} used command (ID: !mute), but declined for `not mentioning a user`.".format(ctx.message.author.name))
 
 @mute.error
 async def mute_error(error, ctx):
     if isinstance(error, commands.CheckFailure):
-        await ctx.bot.say(":x: | Hey, {}! Don't try to use me when I don't want to, baka. **(You don't have permission to use this command!**)".format(ctx.message.author.name))
+        await ctx.bot.say(":x: | Hey, {}! Don't try to use me when I don't want to, baka. **(You don't have permission to use this command!**)".format(ctx.message.author.mention))
         print("{} used command (ID: !mute), but declined for `no permissions`.".format(ctx.message.author.name))
 
 @bot.command(pass_context=True)
@@ -120,20 +120,20 @@ async def warn(ctx, usr, *reason):
         user = ctx.message.mentions[0]
         rsn = " ".join(reason)
         role = discord.utils.get(user.server.roles, name="AnimeNews-Warned")
-        embed = discord.Embed(title="A member has been WARNED!", description="{0} has been warned by {1}!\nReason: {2}".format(user.name, ctx.message.author.name, rsn), color=0xff0000)
-        embed.set_footer(text="this punishment will be reseted on sunday at whenever the owner gets his lazy ass off the chair to do it | report staff abuse by DMing Thegamesbg")
+        embed = discord.Embed(title="A member has been WARNED!", description="{0} has been warned by {1}!\nReason: {2}".format(user.mention, ctx.message.author.mention, rsn), color=0xff0000)
+        embed.set_footer(text="dun't do dis again bad boy | report staff abuse by DMing Thegamesbg")
         embed.set_thumbnail(url=user.avatar_url)
         await bot.add_roles(user, role)
         await bot.say(embed=embed)
-        print("{} used command (ID: !warn), the command was successfully executed.".format(ctx.message.author.name))
+        print("{} used command (ID: !warn), the command was successfully executed.".format(ctx.message.author.mention))
     else:
-        await bot.say(":x: | You need to mention a user!".format(ctx.message.author.name))
+        await bot.say(":x: | You need to mention a user!".format(ctx.message.author.mention))
         print("{} used command (ID: !warn), but declined for `not mentioning a user`.".format(ctx.message.author.name))
 
 @warn.error
 async def warn_error(error, ctx):
     if isinstance(error, commands.CheckFailure):
-        await ctx.bot.say(":x: | Hey, {}! Don't try to use me when I don't want to, baka. **(You don't have permission to use this command!**)".format(ctx.message.author.name))
+        await ctx.bot.say(":x: | Hey, {}! Don't try to use me when I don't want to, baka. **(You don't have permission to use this command!**)".format(ctx.message.author.mention))
         print("{} used command (ID: !warn), but declined for `no permissions`.".format(ctx.message.author.name))
 
 @bot.command(pass_context=True)
@@ -142,7 +142,7 @@ async def kick(ctx, usr, *reason):
     if len(ctx.message.mentions) > 0:
         user = ctx.message.mentions[0]
         rsn = " ".join(reason)
-        embed = discord.Embed(title="A member has been KICKED!", description="{0} has been kicked by {1}!\nReason: {2}".format(user.name, ctx.message.author.name, rsn), color=0xff0000)
+        embed = discord.Embed(title="A member has been KICKED!", description="{0} has been kicked by {1}!\nReason: {2}".format(user.mention, ctx.message.author.mention, rsn), color=0xff0000)
         embed.set_footer(text="last warning, next is permanent ban! | report staff abuse by DMing Thegamesbg")
         embed.set_thumbnail(url=user.avatar_url)
         await bot.send_message(user, "This is your last warning. If you break 1 more rule, you will be permanent banned. Rejoin Anime News from here: https://discord.gg/yNHppj6 | If you've been kicked without a reason, please contact @Thegamesbg#2392.")
@@ -150,13 +150,13 @@ async def kick(ctx, usr, *reason):
         await bot.say(embed=embed)
         print("{} used command (ID: !kick), the command was successfully executed.".format(ctx.message.author.name))
     else:
-        await bot.say(":x: | You need to mention a user!".format(ctx.message.author.name))
+        await bot.say(":x: | You need to mention a user!".format(ctx.message.author.mention))
         print("{} used command (ID: !kick), but declined for `not mentioning a user`.".format(ctx.message.author.name))
 
 @kick.error
 async def kick_error(error, ctx):
     if isinstance(error, commands.CheckFailure):
-        await ctx.bot.say(":x: | Hey, {}! Don't try to use me when I don't want to, baka. **(You don't have permission to use this command!**)".format(ctx.message.author.name))
+        await ctx.bot.say(":x: | Hey, {}! Don't try to use me when I don't want to, baka. **(You don't have permission to use this command!**)".format(ctx.message.author.mention))
         print("{} used command (ID: !kick), but declined for `no permissions`.".format(ctx.message.author.name))
 
 @bot.command(pass_context=True)
@@ -165,7 +165,7 @@ async def ban(ctx, usr, *reason):
     if len(ctx.message.mentions) > 0:
         user = ctx.message.mentions[0]
         rsn = " ".join(reason)
-        embed = discord.Embed(title="A member has been PERMANENT BANNED!", description="{0} has been permanent banned by {1}!\nReason: {2}".format(user.name, ctx.message.author.name, rsn), color=0xff0000)
+        embed = discord.Embed(title="A member has been PERMANENT BANNED!", description="{0} has been permanent banned by {1}!\nReason: {2}".format(user.mention, ctx.message.author.mention, rsn), color=0xff0000)
         embed.set_footer(text="too bad he's/she's gone forever | report staff abuse by DMing Thegamesbg")
         embed.set_thumbnail(url=user.avatar_url)
         await bot.send_message(user, "You are now PERMANENT BANNED from Anime News! You can of course purchase unban by contacting @Thegamesbg#2392 via PayPal or SMS. By that way, you'll also get the donator rank (and all of it's percs)!")
@@ -173,13 +173,13 @@ async def ban(ctx, usr, *reason):
         await bot.ban(user)
         print("{} used command (ID: !ban), the command was successfully executed.".format(ctx.message.author.name))
     else:
-        await bot.say(":x: | You need to mention a user!".format(ctx.message.author.name))
+        await bot.say(":x: | You need to mention a user!".format(ctx.message.author.mention))
         print("{} used command (ID: !ban), but declined for `not mentioning a user`.".format(ctx.message.author.name))
 
 @ban.error
 async def ban_error(error, ctx):
     if isinstance(error, commands.CheckFailure):
-        await ctx.bot.say(":x: | Hey, {}! Don't try to use me when I don't want to, baka. **(You don't have permission to use this command!**)".format(ctx.message.author.name))
+        await ctx.bot.say(":x: | Hey, {}! Don't try to use me when I don't want to, baka. **(You don't have permission to use this command!**)".format(ctx.message.author.mention))
         print("{} used command (ID: !ban), but declined for `no permissions`.".format(ctx.message.author.name))
 
 @bot.command(pass_context=True)
@@ -191,7 +191,7 @@ async def tempmute(ctx, user, tim3, *reason):
         except ValueError:
             return
 
-        embed = discord.Embed(title="A member has been TEMPMUTED!", description="{} has been muted by {}!\nReason: {}\nTime: {} hour/s".format(usr.name, ctx.message.author, " ".join(reason), tim3), color=0xff0000)
+        embed = discord.Embed(title="A member has been TEMPMUTED!", description="{} has been muted by {}!\nReason: {}\nTime: {} hour/s".format(usr.mention, ctx.message.author.mention, " ".join(reason), tim3), color=0xff0000)
         embed.set_footer(text="see ya then I guess | report staff abuse by DMing Thegamesbg")
         embed.set_thumbnail(url=usr.avatar_url)
         await bot.say(embed=embed)
@@ -204,16 +204,17 @@ async def tempmute(ctx, user, tim3, *reason):
         role = discord.utils.get(usr.roles, name="AnimeNews-Muted")
         if role in usr.roles:
             await bot.remove_roles(usr, role)
-            await bot.say("{} is no longer muted".format(usr.name))
+            embed = discord.Embed(title="A member has been UNMUTED!", description="{0} has been unmuted (shceduled)!".format(user.mention), color=0x3adf00)
+            embed.set_footer(text="you can chat, again | report staff abuse by DMing Thegamesbg")
         
 @bot.command(pass_context=True)
 async def pfp(ctx):
     if len(ctx.message.mentions) > 0:
         user = ctx.message.mentions[0]
-        embed = discord.Embed(title="Profile picture of {}:".format(user.name), color=0x5882FA)
+        embed = discord.Embed(title="Profile picture of {}:".format(user.mention), color=0x5882FA)
         embed.set_image(url=user.avatar_url)
         await bot.say(embed=embed)
-        print("{} used command (ID: !pfp), the command was successfully executed.".format(ctx.message.author.name))
+        print("{} used command (ID: !pfp), the command was successfully executed.".format(ctx.message.author.mention))
     else:
         await bot.say(":x: | You need to mention a user!")
         print("{} used a command (ID: !pfp), but got declined for `not mentioning a user`.")
@@ -224,7 +225,7 @@ async def unban(ctx, *username):
     server = ctx.message.author.server
     banned = await bot.get_bans(server)
     user = discord.utils.get(banned, name=" ".join(username))
-    embed = discord.Embed(title="A member has been UBNANNED!", description="{0} has been unbanned by {1}!".format(user.name, ctx.message.author.name), color=0x3adf00)
+    embed = discord.Embed(title="A member has been UBNANNED!", description="{0} has been unbanned by {1}!".format(user.mention, ctx.message.author.mention), color=0x3adf00)
     embed.set_footer(text="hmph, guess you weren't gone forever like it said | report staff abuse by DMing Thegamesbg")
     embed.set_thumbnail(url=user.avatar_url)
     await bot.say(embed=embed)
@@ -234,7 +235,7 @@ async def unban(ctx, *username):
 @unban.error
 async def unban_error(error, ctx):
     if isinstance(error, commands.CheckFailure):
-        await ctx.bot.say(":x: | Hey, {}! Don't try to use me when I don't want to, baka. **(You don't have permission to use this command!**)".format(ctx.message.author.name))
+        await ctx.bot.say(":x: | Hey, {}! Don't try to use me when I don't want to, baka. **(You don't have permission to use this command!**)".format(ctx.message.author.mention))
         print("{} used command (ID: !unban), but declined for `no permissions`.".format(ctx.message.author.name))
 
 @bot.command(pass_context=True)
@@ -243,21 +244,21 @@ async def unmute(ctx, user):
     if len(ctx.message.mentions) > 0:
         user = ctx.message.mentions[0]
         role = discord.utils.get(user.server.roles, name="AnimeNews-Muted")
-        embed = discord.Embed(title="A member has been UNMUTED!", description="{0} has been unmuted by {1}!".format(user.name, ctx.message.author.name), color=0x3adf00)
+        embed = discord.Embed(title="A member has been UNMUTED!", description="{0} has been unmuted by {1}!".format(user.mention, ctx.message.author.mention), color=0x3adf00)
         embed.set_footer(text="you can chat, again | report staff abuse by DMing Thegamesbg")
         embed.set_thumbnail(url=user.avatar_url)
         await bot.send_message(ctx.message.channel, "", embed=embed)
         await bot.remove_roles(user, role)
-        print("{} used command (ID: !unmute), the command was successfully executed.".format(ctx.message.author.name))
+        print("{} used command (ID: !unmute), the command was successfully executed.".format(ctx.message.author.mention))
     else:
-        await bot.say(":x: | You need to mention a user!".format(ctx.message.author.name))
-        print("{} used command (ID: !unmute), but declined for `not mentioning a user`.".format(ctx.message.author.name))
+        await bot.say(":x: | You need to mention a user!".format(ctx.message.author.mention))
+        print("{} used command (ID: !unmute), but declined for `not mentioning a user`.".format(ctx.message.author.mention))
 
 @unmute.error
 async def unmute_error(error, ctx):
     if isinstance(error, commands.CheckFailure):
-        await ctx.bot.say("Hey, {}! Don't try to use me when I don't want to, baka. **(You don't have permission to use this command!**)".format(ctx.message.author.name))
-        print("{} used command (ID: !unmute), but declined for `no permissions`.".format(ctx.message.author.name))
+        await ctx.bot.say("Hey, {}! Don't try to use me when I don't want to, baka. **(You don't have permission to use this command!**)".format(ctx.message.author.mention))
+        print("{} used command (ID: !unmute), but declined for `no permissions`.".format(ctx.message.author.mention))
 
 @bot.command(pass_context=True)
 @commands.has_any_role("Admin", "Moderator")
@@ -265,31 +266,31 @@ async def unwarn(ctx, user):
     if len(ctx.message.mentions) > 0:
         user = ctx.message.mentions[0]
         role = discord.utils.get(user.server.roles, name="AnimeNews-Warned")
-        embed = discord.Embed(title="A member has been UNWARNED!", description="{0} has been unwarned by {1}!".format(user.name, ctx.message.author.name), color=0x3adf00)
+        embed = discord.Embed(title="A member has been UNWARNED!", description="{0} has been unwarned by {1}!".format(user.mention, ctx.message.author.mention), color=0x3adf00)
         embed.set_footer(text="gratz :tada: | report staff abuse by DMing Thegamesbg")
         embed.set_thumbnail(url=user.avatar_url)
         await bot.send_message(ctx.message.channel, "", embed=embed)
         await bot.remove_roles(user, role)
-        print("{} used command (ID: !unmute), the command was successfully executed.".format(ctx.message.author.name))
+        print("{} used command (ID: !unmute), the command was successfully executed.".format(ctx.message.author.mention))
     else:
-        await bot.say(":x: | You need to mention a user!".format(ctx.message.author.name))
-        print("{} used command (ID: !unwarn), but declined for `not mentioning a user`.".format(ctx.message.author.name))
+        await bot.say(":x: | You need to mention a user!".format(ctx.message.author.mention))
+        print("{} used command (ID: !unwarn), but declined for `not mentioning a user`.".format(ctx.message.author.mention))
 
 @unwarn.error
 async def unwarn_error(error, ctx):
     if isinstance(error, commands.CheckFailure):
-        await ctx.bot.say("Hey, {}! Don't try to use me when I don't want to, baka. **(You don't have permission to use this command!**)".format(ctx.message.author.name))
-        print("{} used command (ID: !unwarn), but declined for `no permissions`.".format(ctx.message.author.name))
+        await ctx.bot.say("Hey, {}! Don't try to use me when I don't want to, baka. **(You don't have permission to use this command!**)".format(ctx.message.author.mention))
+        print("{} used command (ID: !unwarn), but declined for `no permissions`.".format(ctx.message.author.mention))
 
 @bot.command(pass_context=True)
 async def magicball(ctx, *reason):
     rsn = " ".join(reason)
     msgs = [":crystal_ball: Yes.", ":crystal_ball: No.", ":crystal_ball: That's not true.", ":crystal_ball: They lied to you.", ":crystal_ball: You got it right.", ":crystal_ball: That's true.", ":crystal_ball: Yes, you are.", ":crystal_ball: No, you aren't."]
     rdm = random.choice(msgs) 
-    embed = discord.Embed(title=rdm, description="Command executed by {} | Question: {}".format(ctx.message.author.name, rsn), color=0x5882FA)
+    embed = discord.Embed(title=rdm, description="Command executed by {} | Question: {}".format(ctx.message.author.mention, rsn), color=0x5882FA)
     embed.set_thumbnail(url=ctx.message.author.avatar_url)
     await bot.say(embed=embed)
-    print("{} used !magicball, question: {}".format(ctx.message.author.name, rsn))
+    print("{} used !magicball, question: {}".format(ctx.message.author.mention, rsn))
 
 @bot.command(pass_context=True)
 async def join(ctx):
@@ -314,7 +315,7 @@ async def kiss(ctx, username):
       user = ctx.message.mentions[0]
       msgs = ["https://cdn.nekos.life/kiss/8585.gif", "https://images-ext-1.discordapp.net/external/Bzrtv_MYjG3fYIbCECRNgUcao1L_MUzpUASOwrtPiG0/https/cdn.nekos.life/kiss/2929.gif", "https://cdn.nekos.life/kiss/kiss13142.gif", "https://cdn.nekos.life/kiss/155155.gif", "https://images-ext-1.discordapp.net/external/zeO78IQa-yafl8XNzVtGFlqG8jHLw3fAKH-QU8e-5Xk/https/cdn.nekos.life/kiss/139139.gif", "https://cdn.nekos.life/kiss/C9C9.gif", "https://cdn.nekos.life/kiss/kiss10050.gif", "https://cdn.nekos.life/kiss/141141.gif", "https://cdn.nekos.life/kiss/kiss18553.gif", "https://cdn.nekos.life/kiss/C5C5.gif", "https://cdn.nekos.life/kiss/kiss1547.gif","https://cdn.nekos.life/kiss/D9D9.gif", "https://cdn.nekos.life/kiss/5555.gif", "https://cdn.nekos.life/kiss/9595.gif", "https://cdn.nekos.life/kiss/kiss16234.gif", "https://cdn.nekos.life/kiss/3535.gif","https://cdn.nekos.life/kiss/119119.gif"]
       rdm = random.choice(msgs)
-      embed = discord.Embed(title="**{}** kisses **{}**. :heart:".format(ctx.message.author.name, user.name), color=0xfe2ef7)
+      embed = discord.Embed(title="**{}** kisses **{}**. :heart:".format(ctx.message.author.mention, user.mention), color=0xfe2ef7)
       embed.set_image(url=rdm)
       await bot.say(embed=embed)
     else:
@@ -323,7 +324,7 @@ async def kiss(ctx, username):
 @kiss.error
 async def kiss_error(error, ctx):
     if isinstance(error, commands.CommandOnCooldown):
-        await bot.say(":x: | Hey, **{}**! Sorry but this command has a cooldown of 10 seconds, please try again in **{}** seconds.".format(ctx.message.author.name, round(error.retry_after, 1)))
+        await bot.say(":x: | Hey, **{}**! Sorry but this command has a cooldown of 10 seconds, please try again in **{}** seconds.".format(ctx.message.author.mention, round(error.retry_after, 1)))
     
 @bot.command(pass_context=True)
 @commands.cooldown(1, 10, commands.BucketType.user)
@@ -332,7 +333,7 @@ async def hug(ctx, username):
       user = ctx.message.mentions[0]
       msgs = ["https://cdn.nekos.life/hug/5D5D.gif", "https://cdn.nekos.life/hug/B1B1.gif", "https://cdn.nekos.life/hug/8989.gif", "https://cdn.nekos.life/hug/2929.gif", "https://cdn.nekos.life/hug/C1C1.gif", "https://cdn.nekos.life/hug/3939.gif", "https://cdn.nekos.life/hug/hug774.gif", "https://cdn.nekos.life/hug/hug13142.gif", "https://cdn.nekos.life/hug/A9A9.gif", "https://cdn.nekos.life/hug/8181.gif", "https://cdn.nekos.life/hug/hug8504.gif", "https://cdn.nekos.life/hug/hug3093.gif", "https://cdn.nekos.life/hug/3535.gif", "https://cdn.nekos.life/hug/2D2D.gif", "https://cdn.nekos.life/hug/4D4D.gif", "https://cdn.nekos.life/hug/hug6185.gif", "https://cdn.nekos.life/hug/9D9D.gif", "https://cdn.nekos.life/hug/hug2320.gif"]
       rdm = random.choice(msgs)
-      embed = discord.Embed(title="**{}** hugs **{}**. :heart:".format(ctx.message.author.name, user.name), color=0xfe2ef7)
+      embed = discord.Embed(title="**{}** hugs **{}**. :heart:".format(ctx.message.author.mention, user.mention), color=0xfe2ef7)
       embed.set_image(url=rdm)
       await bot.say(embed=embed)
     else:
@@ -341,7 +342,7 @@ async def hug(ctx, username):
 @hug.error
 async def hug_error(error, ctx):
     if isinstance(error, commands.CommandOnCooldown):
-        await bot.say(":x: | Hey, **{}**! Sorry but this command has a cooldown of 10 seconds, please try again in **{}** seconds.".format(ctx.message.author.name, round(error.retry_after, 1)))
+        await bot.say(":x: | Hey, **{}**! Sorry but this command has a cooldown of 10 seconds, please try again in **{}** seconds.".format(ctx.message.author.mention, round(error.retry_after, 1)))
     
 @bot.command(pass_context=True)
 @commands.cooldown(1, 10, commands.BucketType.user)
@@ -350,7 +351,7 @@ async def slap(ctx, username):
       user = ctx.message.mentions[0]
       msgs = ["https://cdn.nekos.life/slap/slap17007.gif", "https://cdn.nekos.life/slap/slap6185.gif", "https://cdn.nekos.life/slap/slap74863696a58673d3d2d3332323535353132312e3134376463306136613061386265653434333036353633313437321547.gif", "https://cdn.nekos.life/slap/slap3866.gif", "https://cdn.nekos.life/slap/slap3093.gif", "https://cdn.nekos.life/slap/slap20099.gif", "https://cdn.nekos.life/slap/slap19326.gif", "https://cdn.nekos.life/slap/slap8504.gif", "https://cdn.nekos.life/slap/slap12369.gif", "https://cdn.nekos.life/slap/slap10823.gif"]
       rdm = random.choice(msgs)
-      embed = discord.Embed(title="**{}** slaps **{}**.".format(ctx.message.author.name, user.name), color=0xfe2ef7)
+      embed = discord.Embed(title="**{}** slaps **{}**.".format(ctx.message.author.mention, user.mention), color=0xfe2ef7)
       embed.set_image(url=rdm)
       embed.set_footer(text="Ouch, that hurts!")
       await bot.say(embed=embed)
@@ -360,7 +361,7 @@ async def slap(ctx, username):
 @slap.error
 async def slap_error(error, ctx):
     if isinstance(error, commands.CommandOnCooldown):
-        await bot.say(":x: | Hey, **{}**! Sorry but this command has a cooldown of 10 seconds, please try again in **{}** seconds.".format(ctx.message.author.name, round(error.retry_after, 1)))
+        await bot.say(":x: | Hey, **{}**! Sorry but this command has a cooldown of 10 seconds, please try again in **{}** seconds.".format(ctx.message.author.mention, round(error.retry_after, 1)))
     
 @bot.command(pass_context=True)
 @commands.cooldown(1, 10, commands.BucketType.user)
@@ -369,7 +370,7 @@ async def pat(ctx, username):
       user = ctx.message.mentions[0]
       msgs = ["https://cdn.weeb.sh/images/rkSN7g91M.gif", "https://cdn.weeb.sh/images/rJMskkFvb.gif", "https://cdn.weeb.sh/images/Sy6Gektw-.gif", "https://cdn.weeb.sh/images/rJ4E1ep7f.gif", "https://cdn.weeb.sh/images/SJLaWWRSG.gif", "https://cdn.weeb.sh/images/HkJ2VknqG.gif", "https://cdn.weeb.sh/images/Bk4Ry1KD-.gif", "https://cdn.weeb.sh/images/r12R1kYPZ.gif", "https://cdn.weeb.sh/images/H1jgekFwZ.gif"]
       rdm = random.choice(msgs)
-      embed = discord.Embed(title="**{}** pats **{}**. :3".format(ctx.message.author.name, user.name), color=0xfe2ef7)
+      embed = discord.Embed(title="**{}** pats **{}**. :3".format(ctx.message.author.mention, user.mention), color=0xfe2ef7)
       embed.set_image(url=rdm)
       await bot.say(embed=embed)
     else:
@@ -378,7 +379,7 @@ async def pat(ctx, username):
 @pat.error
 async def pat_error(error, ctx):
     if isinstance(error, commands.CommandOnCooldown):
-        await bot.say(":x: | Hey, **{}**! Sorry but this command has a cooldown of 10 seconds, please try again in **{}** seconds.".format(ctx.message.author.name, round(error.retry_after, 1)))
+        await bot.say(":x: | Hey, **{}**! Sorry but this command has a cooldown of 10 seconds, please try again in **{}** seconds.".format(ctx.message.author.mention, round(error.retry_after, 1)))
     
 @bot.command(pass_context=True)
 @commands.cooldown(1, 10, commands.BucketType.user)
@@ -387,7 +388,7 @@ async def bite(ctx, username):
       user = ctx.message.mentions[0]
       msgs = ["https://cdn.discordapp.com/attachments/496005430254764042/497891785323053056/discord-avatar30092018.png", "https://cdn.discordapp.com/attachments/496005430254764042/497891785323053056/discord-avatar30092018.png"]
       rdm = random.choice(msgs)
-      embed = discord.Embed(title="**{}** bites **{}**.".format(ctx.message.author.name, user.name), color=0xfe2ef7)
+      embed = discord.Embed(title="**{}** bites **{}**.".format(ctx.message.author.mention, user.mention), color=0xfe2ef7)
       embed.set_image(url=rdm)
       embed.set_footer(text="Ouch, that hurts!")
       await bot.say(embed=embed)
@@ -397,7 +398,7 @@ async def bite(ctx, username):
 @bite.error
 async def bite_error(error, ctx):
     if isinstance(error, commands.CommandOnCooldown):
-        await bot.say(":x: | Hey, **{}**! Sorry but this command has a cooldown of 10 seconds, please try again in **{}** seconds.".format(ctx.message.author.name, round(error.retry_after, 1)))
+        await bot.say(":x: | Hey, **{}**! Sorry but this command has a cooldown of 10 seconds, please try again in **{}** seconds.".format(ctx.message.author.mention, round(error.retry_after, 1)))
 
     
 @bot.command(pass_context=True)
@@ -407,7 +408,7 @@ async def tickle(ctx, username):
       user = ctx.message.mentions[0]
       msgs = ["https://cdn.discordapp.com/attachments/496005430254764042/497891785323053056/discord-avatar30092018.png", "https://cdn.discordapp.com/attachments/496005430254764042/497891785323053056/discord-avatar30092018.png"]
       rdm = random.choice(msgs)
-      embed = discord.Embed(title="**{}** tickles **{}**.".format(ctx.message.author.name, user.name), color=0xfe2ef7)
+      embed = discord.Embed(title="**{}** tickles **{}**.".format(ctx.message.author.mention, user.mention), color=0xfe2ef7)
       embed.set_image(url=rdm)
       await bot.say(embed=embed)
     else:
@@ -416,21 +417,21 @@ async def tickle(ctx, username):
 @tickle.error
 async def tickle_error(error, ctx):
     if isinstance(error, commands.CommandOnCooldown):
-        await bot.say(":x: | Hey, **{}**! Sorry but this command has a cooldown of 10 seconds, please try again in **{}** seconds.".format(ctx.message.author.name, round(error.retry_after, 1)))
+        await bot.say(":x: | Hey, **{}**! Sorry but this command has a cooldown of 10 seconds, please try again in **{}** seconds.".format(ctx.message.author.mention, round(error.retry_after, 1)))
     
 @bot.command(pass_context=True)
 @commands.cooldown(1, 10, commands.BucketType.user)
 async def cry(ctx):
     msgs = ["https://media.discordapp.net/attachments/435485699140091906/498047815126351882/Untitled-1.png?width=580&height=326", "https://media.discordapp.net/attachments/435485699140091906/498047830225715200/70864595_p0_master1200.jpg?width=230&height=326"]
     rdm = random.choice(msgs)
-    embed = discord.Embed(title="**{}** is crying...".format(ctx.message.author.name), color=0xfe2ef7)
+    embed = discord.Embed(title="**{}** is crying...".format(ctx.message.author.mention), color=0xfe2ef7)
     embed.set_image(url=rdm)
     await bot.say(embed=embed)
     
 @cry.error
 async def cry_error(error, ctx):
     if isinstance(error, commands.CommandOnCooldown):
-        await bot.say(":x: | Hey, **{}**! Sorry but this command has a cooldown of 10 seconds, please try again in **{}** seconds.".format(ctx.message.author.name, round(error.retry_after, 1)))
+        await bot.say(":x: | Hey, **{}**! Sorry but this command has a cooldown of 10 seconds, please try again in **{}** seconds.".format(ctx.message.author.mention, round(error.retry_after, 1)))
     
 @bot.command(pass_context=True)
 async def embedimg(ctx, *reason):
@@ -444,7 +445,7 @@ async def embedimg(ctx, *reason):
 async def roles(ctx):
     embed = discord.Embed(color=0x5882FA)
     embed.set_author(name="All server roles, listed here:", icon_url=ctx.message.author.avatar_url)
-    embed.set_footer(text="Server leader: Thegamesbg#2392 | Command executed by {}".format(ctx.message.author.name))
+    embed.set_footer(text="Server leader: Thegamesbg#2392 | Command executed by {}".format(ctx.message.author.mention))
     for role in ctx.message.server.roles:
         embed.add_field(name="Server roles:", value=role.name, inline=False)
     await bot.say(embed=embed)
@@ -452,7 +453,7 @@ async def roles(ctx):
 @roles.error
 async def roles_error(error, ctx):
     if isinstance(error, commands.CommandOnCooldown):
-        await bot.say(":x: | Hey, **{}**! Sorry but this command has a cooldown of 300 seconds, please try again in **{}** seconds.".format(ctx.message.author.name, round(error.retry_after, 1)))
+        await bot.say(":x: | Hey, **{}**! Sorry but this command has a cooldown of 300 seconds, please try again in **{}** seconds.".format(ctx.message.author.mention, round(error.retry_after, 1)))
  
 @bot.command(pass_context=True)
 async def level(ctx):
@@ -460,7 +461,7 @@ async def level(ctx):
         users = json.loads(f.read())
 
     lvl = users[ctx.message.author.id]["level"]
-    await bot.send_message(ctx.message.channel, "**XP** | **{}**, you are at ``{}`` level. <a:ANHyped:501653444491214858>".format(ctx.message.author.name, lvl))
+    await bot.send_message(ctx.message.channel, "**XP** | **{}**, you are at ``{}`` level. <a:ANHyped:501653444491214858>".format(ctx.message.author.mention, lvl))
 
 @bot.command(pass_context=True)
 @commands.cooldown(1, 300, commands.BucketType.user)
