@@ -203,8 +203,9 @@ async def tempmute(ctx, user, tim3, *reason):
         role = discord.utils.get(usr.roles, name="AnimeNews-Muted")
         if role in usr.roles:
             await bot.remove_roles(usr, role)
-            embed = discord.Embed(title="A member has been UNMUTED!", description="{0} has been unmuted (shceduled)!".format(usr.mention), color=0x3adf00)
+            embed = discord.Embed(title="A member has been UNMUTED!", description="{0} has been unmuted (automatically)!".format(usr.mention), color=0x3adf00)
             embed.set_footer(text="you can chat, again | report staff abuse by DMing Thegamesbg")
+            embed.set_thumbnail(url=urs.avatar_url)
             await bot.say(embed=embed)
         
 @bot.command(pass_context=True)
