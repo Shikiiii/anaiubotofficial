@@ -569,14 +569,6 @@ async def rps(ctx, memberchoice):
             embedSCISSORSDRAW.set_footer(text="GG, {}!".format(ctx.message.author.name))
             await bot.say(embed=embedSCISSORSDRAW)
             return
-
-@bot.command(pass_context=True)
-async def tempmute(ctx, user, tim3, *reason):
-    if len(ctx.message.mentions) > 0:
-        usr = ctx.message.mentions[0]
-        await muteb(ctx.message.author, usr, " ".join(reason))
-        await asyncio.sleep(float(tim3) * 60 * 60)
-        await unmuteb(usr)
         
 @bot.event
 async def on_ready():
