@@ -183,6 +183,30 @@ async def ban_error(error, ctx):
         print("{} used command (ID: !ban), but declined for `no permissions`.".format(ctx.message.author.name))
 
 @bot.command(pass_context=True)
+async def tempmute(ctx, user, tim3, *reason):
+    if len(ctx.message.mentions) > 0:
+        usr = ctx.message.mentions[0]
+        try:
+            float(tim3)
+        except ValueError:
+            return
+
+        embed = discord.Embed(title="A member has been TEMPMUTED!", description="{} has been muted by {}!\nReason: {}\nTime: {} hour/s".format(usr.name, ctx.message.author, " ".join(reason), tim3), color=0xff0000)
+        embed.set_footer(text="see ya then I guess | report staff abuse by DMing Thegamesbg")
+        embed.set_thumbnail(url=usr.avatar_url)
+        await bot.say(embed=embed)
+
+        role = discord.utils.get(usr.server.roles, name="AnimeNews-Muted")
+        await bot.add_roles(usr, role)
+
+        await asyncio.sleep(float(tim3) * 60 * 60)
+
+        role = discord.utils.get(usr.roles, name="AnimeNews-Muted")
+        if role in usr.roles:
+            await bot.remove_roles(usr, role)
+            await bot.say("{} is no longer muted".format(usr.name))
+        
+@bot.command(pass_context=True)
 async def pfp(ctx):
     if len(ctx.message.mentions) > 0:
         user = ctx.message.mentions[0]
@@ -546,6 +570,14 @@ async def rps(ctx, memberchoice):
             await bot.say(embed=embedSCISSORSDRAW)
             return
 
+@bot.command(pass_context=True)
+async def tempmute(ctx, user, tim3, *reason):
+    if len(ctx.message.mentions) > 0:
+        usr = ctx.message.mentions[0]
+        await muteb(ctx.message.author, usr, " ".join(reason))
+        await asyncio.sleep(float(tim3) * 60 * 60)
+        await unmuteb(usr)
+        
 @bot.event
 async def on_ready():
     await bot.change_presence(game=discord.Game(name='!help | Made by Thegamesbg#2392 with love.'))
