@@ -207,6 +207,45 @@ async def tempmute(ctx, user, tim3, *reason):
             embed.set_footer(text="you can chat, again | report staff abuse by DMing Thegamesbg")
             embed.set_thumbnail(url=usr.avatar_url)
             await bot.say(embed=embed)
+
+@tempmute.error
+async def tempmute_error(error, ctx):
+    if isinstance(error, commands.CheckFailure):
+        await ctx.bot.say(":x: | Hey, {}! Don't try to use me when I don't want to, baka. **(You don't have permission to use this command!**)".format(ctx.message.author.mention))
+        print("{} used command (ID: !ban), but declined for `no permissions`.".format(ctx.message.author.name))
+
+@bot.command(pass_context=True)
+async def tempwarn(ctx, user, tim3, *reason):
+    if len(ctx.message.mentions) > 0:
+        usr = ctx.message.mentions[0]
+        try:
+            float(tim3)
+        except ValueError:
+            return
+
+        embed = discord.Embed(title="A member has been TEMPWARNED!", description="{} has been warned by {}!\nReason: {}\nTime: {} hour/s".format(usr.mention, ctx.message.author.mention, " ".join(reason), tim3), color=0xff0000)
+        embed.set_footer(text="you are a bad boy, not so bad tho | report staff abuse by DMing Thegamesbg")
+        embed.set_thumbnail(url=usr.avatar_url)
+        await bot.say(embed=embed)
+
+        role = discord.utils.get(usr.server.roles, name="AnimeNews-Warned")
+        await bot.add_roles(usr, role)
+
+        await asyncio.sleep(float(tim3) * 60 * 60)
+
+        role = discord.utils.get(usr.roles, name="AnimeNews-Warned")
+        if role in usr.roles:
+            await bot.remove_roles(usr, role)
+            embed = discord.Embed(title="A member has been UNWARNED!", description="{0} has been unwarned (automatically)!".format(usr.mention), color=0x3adf00)
+            embed.set_footer(text="you are no longer a bad boy >.< | report staff abuse by DMing Thegamesbg")
+            embed.set_thumbnail(url=usr.avatar_url)
+            await bot.say(embed=embed)
+
+@tempwarn.error
+async def tempwarn_error(error, ctx):
+    if isinstance(error, commands.CheckFailure):
+        await ctx.bot.say(":x: | Hey, {}! Don't try to use me when I don't want to, baka. **(You don't have permission to use this command!**)".format(ctx.message.author.mention))
+        print("{} used command (ID: !ban), but declined for `no permissions`.".format(ctx.message.author.name))
         
 @bot.command(pass_context=True)
 async def pfp(ctx):
