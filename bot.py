@@ -376,7 +376,7 @@ async def pat(ctx, username):
       await bot.say(embed=embed)
     else:
       await bot.say(":x: | You need to mention a user to pat him/her!")
-    
+
 @pat.error
 async def pat_error(error, ctx):
     if isinstance(error, commands.CommandOnCooldown):
