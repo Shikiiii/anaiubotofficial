@@ -111,7 +111,7 @@ async def mute_error(error, ctx):
     if isinstance(error, commands.CheckFailure):
         await ctx.bot.say(":x: | Hey, {}! Don't try to use me when I don't want to, baka. **(You don't have permission to use this command!**)".format(ctx.message.author.mention))
         print("{} used command (ID: !mute), but declined for `no permissions`.".format(ctx.message.author.name))
-
+  
 @bot.command(pass_context=True)
 @commands.has_any_role("Admin", "Moderator")
 async def warn(ctx, usr, *reason):
