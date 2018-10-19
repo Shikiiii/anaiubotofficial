@@ -644,7 +644,7 @@ async def rps(ctx, memberchoice):
         
 @bot.command(pass_context=True)
 async def someone(ctx, *message):
-    smn = random.choice(ctx.message.server.members)
+    smn = random.choice(list(ctx.message.server.members.values()))
     await bot.edit_message(ctx.author.message, new_content="{} {}".format(smn.mention, message))
 
 @bot.event
