@@ -642,6 +642,11 @@ async def rps(ctx, memberchoice):
             await bot.say(embed=embedSCISSORSDRAW)
             return
         
+@bot.command(pass_context=True)
+async def someone(ctx, *message):
+    smn = random.choice(ctx.message.server.members)
+    await bot.edit_message(ctx.message, new_content="{} {}".format(smn.mention, message), *, embed=None)
+
 @bot.event
 async def on_ready():
     await bot.change_presence(game=discord.Game(name='!help | Made by Thegamesbg#2392 with love.'))
