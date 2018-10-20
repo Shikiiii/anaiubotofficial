@@ -307,6 +307,22 @@ async def serverinfo(ctx):
     await bot.say(embed=embed)
 
 @bot.command(pass_context=True)
+async def whois(ctx, user):
+    if len(ctx.message.mentions) > 0:
+        user = ctx.message.mentions[0]
+        getEC = [0xF3F781, 0x3A01DF, 0xFF0040, 0x58FAF4]
+        useravatar = user.avatar_url
+        embed = discord.Embed(title="Information of {}:".format(user.display_name), description="(Original name: {})".format(user.name), color=random.choice(getEC))
+        embed.add_field(name="User ID:", value=user.id, inline=False)
+        embed.add_field(name="User account created at:", value=user.created_at, inline=False)
+        embed.add_field(name="Is the user a bot:", value=user.bot, inline=False)
+        for role in user.roles:
+            embed.add_field(name="User roles:", value=role.mention, inline=True)
+        embed.add_field(name="User avatar:", value=user.avatar_url, inline=False)
+        embed.set_image(url=useravatar
+        await bot.say(embed=embed)
+
+@bot.command(pass_context=True)
 @commands.has_any_role("Admin", "Moderator")
 async def unban(ctx, *username):
     server = ctx.message.author.server
