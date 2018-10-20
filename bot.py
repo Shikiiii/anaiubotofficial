@@ -294,13 +294,15 @@ async def pfp(ctx):
 async def serverinfo(ctx):
     getEC = [0xF3F781, 0x3A01DF, 0xFF0040, 0x58FAF4]
     user = ctx.message.author
-    serveravatar = ctx.message.server.icon
-    embed = discord.Embed(title="Information of {}:".format(ctx.message.server.name), description="{}".format(serveravatar), color=random.choice(getEC))
+    serveravatar = ctx.message.server.icon_url
+    embed = discord.Embed(title="Information of {}:".format(ctx.message.server.name), description="Tip: More information like server roles can be viewed by using special commands. Check them using !help.", color=random.choice(getEC))
     embed.add_field(name="Server region:", value=ctx.message.server.region, inline=False)
     embed.add_field(name="Server owner:", value=ctx.message.server.owner.mention, inline=False)
     embed.add_field(name="Server ID:", value=ctx.message.server.id, inline=False)
     embed.add_field(name="Members counter:", value=ctx.message.server.member_count, inline=False)
     embed.add_field(name="Created at:", value=ctx.message.server.created_at, inline=False)
+    embed.add_field(name="Server avatar:", value=ctx.message.server.icon_url, inline=False)
+    embed.set_image(serveravatar)
     embed.set_footer(text="Command executed by: {}".format(ctx.message.author.name), icon_url=ctx.message.author.avatar_url)
     await bot.say(embed=embed)
 
