@@ -24,7 +24,7 @@ def switch(argument):
         "teaboi": "1"
     }
     return switcher.get(argument, "Invalid user")
-
+    
 voice_client = None
 
 async def try_create_user(users, user):
