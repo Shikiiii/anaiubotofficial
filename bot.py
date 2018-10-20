@@ -54,10 +54,9 @@ async def level_up(users, user, channel):
             await bot.send_message(channel, ":star: | **{}** reached a milestone! Reward: **5Level Role**".format(user.mention))
             await bot.add_roles(user, reward5)
             
-@bot.command(pass_context=True)
+@bot.command
 async def bongo(ctx):
     await bot.say("<a:bongo:496076193846788096>")
-    print('Someone used command (ID: !hello). The command was successfully executed.')
     
 @bot.command(pass_context=True)
 async def t(ctx):
