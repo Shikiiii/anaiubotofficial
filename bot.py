@@ -56,7 +56,7 @@ async def level_up(users, user, channel):
             
 @bot.command(pass_context=True)
 async def bongo(ctx):
-    await bot.send_message(ctx.message.channel, "<a:bongo:496076193846788096>")
+    await bot.send_message(ctx.message.channel, "bongo u baka :sob: <a:bongo:496076193846788096>")
     
 @bot.command(pass_context=True)
 async def t(ctx):
