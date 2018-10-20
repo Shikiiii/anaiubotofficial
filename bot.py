@@ -57,7 +57,7 @@ async def level_up(users, user, channel):
 @bot.command(pass_context=True)
 async def bongo(ctx):
     embed = discord.Embed()
-    embed.set_image(url=https://cdn.discordapp.com/emojis/496076193846788096.gif?v=1)
+    embed.set_image(url="https://cdn.discordapp.com/emojis/496076193846788096.gif?v=1")
     await bot.send_message(ctx.message.channel, "", embed=embed)
 
     
