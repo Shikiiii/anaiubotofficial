@@ -318,6 +318,8 @@ async def whois(ctx, user):
         embed.add_field(name="Is the user a bot:", value=user.bot, inline=False)
         roles = []
         for role in user.roles:
+            if role.name == "@everyone":
+                continue
             roles.append(role.mention)
         embed.add_field(name="User roles:", value=" ".join(roles), inline=True)
         embed.add_field(name="User avatar:", value=user.avatar_url, inline=False)
