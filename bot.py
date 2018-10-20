@@ -55,8 +55,8 @@ async def level_up(users, user, channel):
             await bot.add_roles(user, reward5)
             
 @bot.command(pass_context=True)
-async def hello(ctx):
-    await bot.say("Hello! :smile:")
+async def bongo(ctx):
+    await bot.say("<a:bongo::496076193846788096:>")
     print('Someone used command (ID: !hello). The command was successfully executed.')
     
 @bot.command(pass_context=True)
