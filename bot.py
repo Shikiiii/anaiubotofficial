@@ -56,7 +56,9 @@ async def level_up(users, user, channel):
             
 @bot.command(pass_context=True)
 async def bongo(ctx):
-    await bot.send_message(ctx.message.channel, "bongo u baka :sob: <a:496076193846788096:496076193846788096>")
+    embed = discord.Embed()
+    embed.set_image(url=https://cdn.discordapp.com/emojis/496076193846788096.gif?v=1)
+
     
 @bot.command(pass_context=True)
 async def t(ctx):
