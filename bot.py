@@ -319,7 +319,7 @@ async def whois(ctx, user):
         for role in user.roles:
             embed.add_field(name="User roles:", value=role.mention, inline=True)
         embed.add_field(name="User avatar:", value=user.avatar_url, inline=False)
-        embed.set_image(url=useravatar
+        embed.set_image(url=useravatar)
         await bot.say(embed=embed)
 
 @bot.command(pass_context=True)
