@@ -301,7 +301,7 @@ async def serverinfo(ctx):
     embed.add_field(name="Server ID:", value=ctx.message.server.id, inline=False)
     embed.add_field(name="Members counter:", value=ctx.message.server.member_count, inline=False)
     embed.add_field(name="Created at:", value=ctx.message.server.created_at, inline=False)
-    embed.set_footer(text="Command executed by: {}".format(ctx.message.author.name), icon_url=ctx.message.author.avatar_url)
+    embed.set_footer(text="Command executed by: {}".format(ctx.message.author.name), icon_url=ctx.message.author.avatar)
     await bot.say(embed=embed)
 
 @bot.command(pass_context=True)
