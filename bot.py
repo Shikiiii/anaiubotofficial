@@ -11,7 +11,7 @@ import time
 from discord.voice_client import VoiceClient
 
 cooldowns = {}
-
+    
 bot = commands.Bot(command_prefix='!')
 bot.remove_command('help')
 
