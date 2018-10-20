@@ -16,7 +16,7 @@ bot = commands.Bot(command_prefix='!')
 bot.remove_command('help')
 
 players = []
-
+    
 def switch(argument):
     switcher = {
         "blackyy": "3",
