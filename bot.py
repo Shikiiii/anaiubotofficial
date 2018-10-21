@@ -85,14 +85,14 @@ async def ping(ctx):
         msg = await bot.wait_for_message(timeout=30, author=ctx.message.author, content='inform')
 
         if msg is None:
-            await bot.send_message(ctx.message.channel,
+            await bot.send_message(ctx.server.channels,
                                    "Alright, {}. The bot support wasn't informed because you didn't typed ``inform``.".format(
                                        ctx.message.author.name))
             return
 
         informed = discord.Embed(title="Thank you! The bot support has been informed.", description="owo",
                                  color=0x3adf00)
-        botsuppchannel = discord.utils.get(ctx.message.server.channel, name="bot-support")
+        botsuppchannel = discord.utils.get(ctx.server.channels, name="bot-support")
         await bot.send_message(botsuppchannel, "{} reported a high ping! {}ms.".format(ctx.message.author, ping))
         await bot.send_message(ctx.message.channel, "", embed=informed)
     
