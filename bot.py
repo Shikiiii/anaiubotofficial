@@ -69,13 +69,13 @@ async def ping(ctx):
         embed = discord.Embed(title="Ping: {}ms.".format(ping),
                               description=":green_book: Ping is normal! There's no need to inform bot support.",
                               color=0x00ff00)
-        bot.say(embed=embed)
+        await bot.say(embed=embed)
         return
     elif ping < 200:
         embed = discord.Embed(title="Ping: {}ms.".format(ping),
                               description=":orange_book: Ping is abnormal! There's no need to inform bot support, but try using !ping again after 5 minutes and check the ping again, just in case.",
                               color=0xfe9a2e)
-        bot.say(embed=embed)
+        await bot.say(embed=embed)
         return
     else:
         embed = discord.Embed(title="Ping: {}ms.".format(ping),
