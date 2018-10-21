@@ -64,7 +64,37 @@ async def bongo(ctx):
 @bot.command(pass_context=True)
 async def ping(ctx):
     delta = datetime.datetime.now() - ctx.message.timestamp
-    await bot.say("Ping: {}ms".format(round(delta.microseconds / 1000)))
+    ping = round(delta.microseconds / 1000)
+    if ping < 100:
+        embed = discord.Embed(title="Ping: {}ms.".format(ping),
+                              description=":green_book: Ping is normal! There's no need to inform bot support.",
+                              color=0x00ff00)
+        bot.say(embed=embed)
+        return
+    elif ping < 200:
+        embed = discord.Embed(title="Ping: {}ms.".format(ping),
+                              description=":orange_book: Ping is abnormal! There's no need to inform bot support, but try using !ping again after 5 minutes and check the ping again, just in case.",
+                              color=0xfe9a2e)
+        bot.say(embed=embed)
+        return
+    else:
+        embed = discord.Embed(title="Ping: {}ms.".format(ping),
+                              description=":closed_book: Ping is high! Please, type ``inform`` to inform bot support.",
+                              color=0xff0000)
+        await bot.say(embed=embed)
+        msg = await bot.wait_for_message(timeout=30, author=ctx.message.author, content='inform')
+
+        if msg is None:
+            await bot.send_message(ctx.message.channel,
+                                   "Alright, {}. The bot support wasn't informed because you didn't typed ``inform``.".format(
+                                       ctx.message.author.name))
+            return
+
+        informed = discord.Embed(title="Thank you! The bot support has been informed.", description="owo",
+                                 color=0x3adf00)
+        botsuppchannel = discord.utils.get(ctx.message.server.channels, name="bot-support")
+        await bot.send_message(botsuppchannel, "{} reported a high ping! {}ms.".format(ctx.message.author, ping))
+        await bot.send_message(ctx.message.channel, "", embed=informed)
     
 @bot.command(pass_context=True)
 async def t(ctx):
@@ -104,7 +134,7 @@ async def mute(ctx, usr, *reason):
         rsn = " ".join(reason)
         role = discord.utils.get(user.server.roles, name="AnimeNews-Muted")
         embed = discord.Embed(title="A member has been MUTED!", description="{0} has been muted by {1}!\nReason: {2}".format(user.mention, ctx.message.author.mention, rsn), color=0xff0000)
-        embed.set_footer(text=":zipper_mouth: owo | report staff abuse by DMing Thegamesbg")
+        embed.set_footer(text=":zipper_mouth: owo | staff abuse by DMing Thegamesbg")
         embed.set_thumbnail(url=user.avatar_url)
         await bot.add_roles(user, role)
         await bot.say(embed=embed)
